@@ -1,0 +1,27 @@
+<h1>Listing moon_phases</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Image</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @moon_phases.each do |moon_phase| %>
+      <tr>
+        <td><%= moon_phase.name %></td>
+        <td><%= moon_phase.image %></td>
+        <td><%= link_to 'Show', moon_phase %></td>
+        <td><%= link_to 'Edit', edit_moon_phase_path(moon_phase) %></td>
+        <td><%= link_to 'Destroy', moon_phase, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Moon phase', new_moon_phase_path %>

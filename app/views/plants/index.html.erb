@@ -1,0 +1,33 @@
+<h1>Listing plants</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Group</th>
+      <th>Water amount</th>
+      <th>Comment</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @plants.each do |plant| %>
+      <tr>
+        <td><%= plant.name %></td>
+        <td><%= plant.type %></td>
+        <td><%= plant.group %></td>
+        <td><%= plant.water_amount %></td>
+        <td><%= plant.comment %></td>
+        <td><%= link_to 'Show', plant %></td>
+        <td><%= link_to 'Edit', edit_plant_path(plant) %></td>
+        <td><%= link_to 'Destroy', plant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Plant', new_plant_path %>

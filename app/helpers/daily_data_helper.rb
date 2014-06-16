@@ -1,0 +1,2 @@
+module DailyDataHelper
+end

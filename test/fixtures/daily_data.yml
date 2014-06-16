@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  daily_date: 2014-06-13
+  temp_low: 1
+  temp_high: 1
+  eggs_collected: 1
+  total_ducks: 1
+  hours_of_daylight: 2014-06-13 20:33:07
+  sunrise: 2014-06-13 20:33:07
+  moon_phase_id: 1
+  moon_percent: 1
+  weather: MyString
+  rained: false
+
+two:
+  daily_date: 2014-06-13
+  temp_low: 1
+  temp_high: 1
+  eggs_collected: 1
+  total_ducks: 1
+  hours_of_daylight: 2014-06-13 20:33:07
+  sunrise: 2014-06-13 20:33:07
+  moon_phase_id: 1
+  moon_percent: 1
+  weather: MyString
+  rained: false

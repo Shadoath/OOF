@@ -1,0 +1,2 @@
+module HarvestTypesHelper
+end

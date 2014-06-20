@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="small-12 columns">
+    <%= simple_form_for(@active_plant) do |f| %>
+      <% if @active_plant.errors.any? %>
+        <div class="div.alert-box.alert.round" id="error_explanation">
+          <h2><%= pluralize(@active_plant.errors.count, "error") %> prohibited this active plant from being saved:</h2>
+          <ul>
+      <% @active_plant.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+        </div>
+      <% end %>
+      <%= f.input :plant_id, collection: @plants, prompt: "Choose wisely" %>
+      <%= f.collection_select :location_id, Location.all, :id, :name,   prompt: "Choose wisely" %>
+      <%= f.input :status_id, collection: @plant_status, prompt: "Choose wisely" %>
+      <%= f.input :count_active %><br>
+      <%= f.input :count_harvested %><br>
+      <%= f.input :comment %><br>
+      <%= f.button :submit %>
+    <% end %>
+  </div>
+</div>
+

@@ -2,9 +2,10 @@ class CreatePlants < ActiveRecord::Migration
   def change
     create_table :plants do |t|
       t.string :name
-      t.string :type
+      t.string :plant_type
       t.string :group
-      t.string :water_amount
+      t.integer :water_amount_id
+      t.integer :harvest_type_id
       t.string :comment
 
       t.timestamps

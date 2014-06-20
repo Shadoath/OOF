@@ -15,6 +15,7 @@ class LocationsController < ApplicationController
   # GET /locations/new
   def new
     @location = Location.new
+    @soil_types = Soil.all
   end
 
   # GET /locations/1/edit

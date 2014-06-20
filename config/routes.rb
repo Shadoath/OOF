@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :active_plants
+
+  resources :harvest_types
+
   resources :daily_data
 
   resources :soils
@@ -10,6 +14,8 @@ Rails.application.routes.draw do
   resources :plants
 
   resources :locations
+   
+  resources :water_amounts
 
   root 'base#index'
   # The priority is based upon order of creation: first created -> highest priority.

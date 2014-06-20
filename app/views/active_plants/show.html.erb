@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Plant:</strong>
+  <%= @active_plant.plant_id %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @active_plant.status_id %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @active_plant.location_id %>
+</p>
+
+<p>
+  <strong>Soil:</strong>
+  <%= @active_plant.soil_id %>
+</p>
+
+<p>
+  <strong>Count active:</strong>
+  <%= @active_plant.count_active %>
+</p>
+
+<p>
+  <strong>Count harvested:</strong>
+  <%= @active_plant.count_harvested %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @active_plant.comment %>
+</p>
+
+<%= link_to 'Edit', edit_active_plant_path(@active_plant) %> |
+<%= link_to 'Back', active_plants_path %>

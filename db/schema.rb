@@ -11,9 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140613203307) do
+ActiveRecord::Schema.define(version: 20140620151116) do
 
-  create_table "daily_data", force: true do |t|
+  create_table "active_plants", force: true do |t|
+    t.integer  "plant_id"
+    t.integer  "status_id"
+    t.integer  "location_id"
+    t.integer  "count_active"
+    t.integer  "count_harvested"
+    t.text     "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "daily_records", force: true do |t|
     t.date     "daily_date"
     t.integer  "temp_low"
     t.integer  "temp_high"
@@ -29,9 +40,14 @@ ActiveRecord::Schema.define(version: 20140613203307) do
     t.datetime "updated_at"
   end
 
+  create_table "harvest_types", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "locations", force: true do |t|
     t.string   "name"
-    t.string   "sub_name"
     t.integer  "soil_id"
     t.integer  "size"
     t.string   "comment"
@@ -54,9 +70,10 @@ ActiveRecord::Schema.define(version: 20140613203307) do
 
   create_table "plants", force: true do |t|
     t.string   "name"
-    t.string   "type"
+    t.string   "plant_type"
     t.string   "group"
-    t.string   "water_amount"
+    t.integer  "water_amount_id"
+    t.integer  "harvest_type_id"
     t.string   "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -66,6 +83,10 @@ ActiveRecord::Schema.define(version: 20140613203307) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "water_amounts", force: true do |t|
+    t.string "name"
   end
 
 end

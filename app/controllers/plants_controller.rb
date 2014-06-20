@@ -25,7 +25,7 @@ class PlantsController < ApplicationController
   # POST /plants.json
   def create
     @plant = Plant.new(plant_params)
-
+   puts "plant_params"+plant_params
     respond_to do |format|
       if @plant.save
         format.html { redirect_to @plant, notice: 'Plant was successfully created.' }
@@ -69,6 +69,6 @@ class PlantsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def plant_params
-      params.require(:plant).permit(:name, :type, :group, :water_amount, :comment)
+       params.require(:plant).permit(:name, :type, :group, :water_amount, :single_harvest, :comment)
     end
 end

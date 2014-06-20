@@ -20,6 +20,9 @@ gem 'simple_form'
 #file Uploads
 gem 'paperclip'
 
+#CSS Foundation
+gem 'foundation-rails'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :plantings
+
   resources :active_plants
 
   resources :harvest_types

@@ -2,32 +2,22 @@
 
 <p>
   <strong>Plant:</strong>
-  <%= @active_plant.plant_id %>
+   <%= @active_plant.plant.name %>
 </p>
 
 <p>
   <strong>Status:</strong>
-  <%= @active_plant.status_id %>
+   <%= @active_plant.plant_status.name if @active_plant.plant_status_id%>
 </p>
 
 <p>
   <strong>Location:</strong>
-  <%= @active_plant.location_id %>
-</p>
-
-<p>
-  <strong>Soil:</strong>
-  <%= @active_plant.soil_id %>
+   <%= @active_plant.location.name %>
 </p>
 
 <p>
   <strong>Count active:</strong>
   <%= @active_plant.count_active %>
-</p>
-
-<p>
-  <strong>Count harvested:</strong>
-  <%= @active_plant.count_harvested %>
 </p>
 
 <p>

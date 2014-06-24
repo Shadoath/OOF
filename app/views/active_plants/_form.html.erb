@@ -11,11 +11,11 @@
       </ul>
         </div>
       <% end %>
-      <%= f.input :plant_id, collection: @plants, prompt: "Choose wisely" %>
-      <%= f.collection_select :location_id, Location.all, :id, :name,   prompt: "Choose wisely" %>
-      <%= f.input :status_id, collection: @plant_status, prompt: "Choose wisely" %>
+      <%= f.input :plant_id, collection: Plant.all, prompt: "Choose wisely" %>
+      <td> Location </td>
+      <%= f.collection_select :location_id, Location.all, :id, :name,   prompt: "Choose wisely", label: "Location" %>
+      <%= f.input :plant_status_id, collection: PlantStatus.all, prompt: "Choose wisely" %>
       <%= f.input :count_active %><br>
-      <%= f.input :count_harvested %><br>
       <%= f.input :comment %><br>
       <%= f.button :submit %>
     <% end %>

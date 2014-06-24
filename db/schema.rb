@@ -11,14 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140620151116) do
+ActiveRecord::Schema.define(version: 20140620231120) do
 
   create_table "active_plants", force: true do |t|
     t.integer  "plant_id"
-    t.integer  "status_id"
+    t.integer  "plant_status_id"
     t.integer  "location_id"
     t.integer  "count_active"
-    t.integer  "count_harvested"
     t.text     "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -64,6 +63,17 @@ ActiveRecord::Schema.define(version: 20140620151116) do
 
   create_table "plant_statuses", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "plantings", force: true do |t|
+    t.integer  "active_plant_id"
+    t.integer  "plant_status_id"
+    t.integer  "location_id"
+    t.integer  "count_planted"
+    t.date     "date_planted"
+    t.text     "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  active_plant_id: 1
+  status_id: 
+  location_id: 
+  soil_id: 
+  count_planted: 
+  date_planted: 2014-06-20
+
+two:
+  active_plant_id: 1
+  status_id: 
+  location_id: 
+  soil_id: 
+  count_planted: 
+  date_planted: 2014-06-20

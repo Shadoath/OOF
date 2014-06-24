@@ -12,7 +12,6 @@
         </div>
       <% end %>
       <%= f.input :name, as: :string %>
-      <%= f.input :sub_name, as: :text %>
       <%= f.input :soil_id, collection: @soil_types, prompt: "Choose wisely" %>
       <%= f.input :size, hint: "(Feet)" %><br>
       <%= f.input :comment %><br>

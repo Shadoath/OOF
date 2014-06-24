@@ -6,9 +6,7 @@
       <th>Plant</th>
       <th>Status</th>
       <th>Location</th>
-      <th>Soil</th>
       <th>Count active</th>
-      <th>Count harvested</th>
       <th>Comment</th>
       <th colspan="3"></th>
     </tr>
@@ -17,12 +15,10 @@
   <tbody>
     <% @active_plants.each do |active_plant| %>
       <tr>
-        <td><%= active_plant.plant_id %></td>
-        <td><%= active_plant.status_id %></td>
-        <td><%= active_plant.location_id %></td>
-        <td><%= active_plant.soil_id %></td>
+         <td><%= active_plant.plant.name %></td>
+         <td><%= active_plant.plant_status.name if active_plant.plant_status_id %></td>
+         <td><%= active_plant.location.name %></td>
         <td><%= active_plant.count_active %></td>
-        <td><%= active_plant.count_harvested %></td>
         <td><%= active_plant.comment %></td>
         <td><%= link_to 'Show', active_plant %></td>
         <td><%= link_to 'Edit', edit_active_plant_path(active_plant) %></td>

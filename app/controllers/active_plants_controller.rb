@@ -15,10 +15,6 @@ class ActivePlantsController < ApplicationController
   # GET /active_plants/new
   def new
     @active_plant = ActivePlant.new
-    @plants = Plant.all
-    @plant_status = PlantStatus.all
-    @locations = Location.all
-
 
   end
 
@@ -30,11 +26,16 @@ class ActivePlantsController < ApplicationController
   # POST /active_plants.json
   def create
     @active_plant = ActivePlant.new(active_plant_params)
-
+     puts "active_plant_params="+active_plant_params.inspect
     respond_to do |format|
       if @active_plant.save
+         #Create a Planting record
+         puts "@active_plant.inspect="+@active_plant.inspect
+         @planting = Planting.create(active_plant_id: @active_plant.id, plant_status_id: active_plant_params[:plant_status_id], location_id: @active_plant.location_id, count_planted: active_plant_params[:count_active], date_planted: Date.today)
+         #
+         @planting.save
         format.html { redirect_to @active_plant, notice: 'Active plant was successfully created.' }
-        format.json { render :show, status: :created, location: @active_plant }
+        format.json { render :show, plant_status_id: :created, location: @active_plant }
       else
         format.html { render :new }
         format.json { render json: @active_plant.errors, status: :unprocessable_entity }
@@ -74,6 +75,6 @@ class ActivePlantsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def active_plant_params
-      params.require(:active_plant).permit(:plant_id, :status_id, :location_id, :soil_id, :count_active, :count_harvested, :comment)
+      params.require(:active_plant).permit(:plant_id, :plant_status_id, :location_id, :soil_id, :count_active, :comment)
     end
 end

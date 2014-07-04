@@ -1,29 +1,33 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Plant:</strong>
-   <%= @active_plant.plant.name %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-   <%= @active_plant.plant_status.name if @active_plant.plant_status_id%>
-</p>
-
-<p>
-  <strong>Location:</strong>
-   <%= @active_plant.location.name %>
-</p>
-
-<p>
-  <strong>Count active:</strong>
-  <%= @active_plant.count_active %>
-</p>
-
-<p>
-  <strong>Comment:</strong>
-  <%= @active_plant.comment %>
-</p>
+<div class="row">
+   <div class="small-12 columns">
+      <strong>Plant:</strong>
+      <%= @active_plant.plant.name %>
+   </div>
+   <div class="small-12 columns">
+      <strong>Status:</strong>
+      <%= @active_plant.plant_status.name if @active_plant.plant_status_id%>
+   </div>
+   <div class="small-12 columns">
+      <strong>Location:</strong>
+      <%= @active_plant.location.name %>
+   </div>
+   <div class="small-12 columns">
+     <strong>Count active:</strong>
+     <%= @active_plant.count_active %>
+   </div>
+   <div class="small-12 columns">
+     <strong>Last Watering:</strong>
+      <%= @active_plant.last_watering_date %>
+   </div>
+   <div class="small-12 columns">
+     <strong>Last Nutrients:</strong>
+      <%= @active_plant.last_nutrient_date %>
+   </div>
+   <div class="small-12 columns">
+     <strong>Comment:</strong>
+     <%= @active_plant.comment %>
+   </div>
 
 <%= link_to 'Edit', edit_active_plant_path(@active_plant) %> |
 <%= link_to 'Back', active_plants_path %>

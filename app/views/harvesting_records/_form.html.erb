@@ -1,0 +1,24 @@
+
+<div class="row">
+  <div class="small-12 columns">
+     <%= simple_form_for(@harvesting_record) do |f| %>
+      <% if @harvesting_record.errors.any? %>
+        <div class="div.alert-box.alert.round" id="error_explanation">
+          <h2><%= pluralize(@harvesting_record.errors.count, "error") %> prohibited this Harvestfrom being saved:</h2>
+          <ul>
+      <% @harvesting_record.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+        </div>
+      <% end %>
+     <%= f.input :active_plant_id, collection: ActivePlant.all, label_method: lambda { |ap| "#{ap.plant.name} | #{ap.location.name}" }, prompt: "Choose wisely" %>
+     <%= f.input :date_harvested %>
+     <td> TODO harvest Type of selected Plant </td>
+     <%= f.input :count_harvested %>
+     <%= f.input :weight_type_id, collection: WeightType.all, label_method: lambda { |w| "#{w.name}" } %>
+     <%= f.button :submit %>
+
+   <% end %>
+   </div>
+</div>

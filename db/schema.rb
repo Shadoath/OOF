@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140620231120) do
+ActiveRecord::Schema.define(version: 20140701153140) do
 
   create_table "active_plants", force: true do |t|
     t.integer  "plant_id"
@@ -21,26 +21,21 @@ ActiveRecord::Schema.define(version: 20140620231120) do
     t.text     "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "daily_records", force: true do |t|
-    t.date     "daily_date"
-    t.integer  "temp_low"
-    t.integer  "temp_high"
-    t.integer  "eggs_collected"
-    t.integer  "total_ducks"
-    t.time     "hours_of_daylight"
-    t.time     "sunrise"
-    t.integer  "moon_phase_id"
-    t.integer  "moon_percent"
-    t.string   "weather"
-    t.boolean  "rained"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.date     "last_watering_date"
+    t.date     "last_nutrient_date"
   end
 
   create_table "harvest_types", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "harvesting_records", force: true do |t|
+    t.integer  "active_plant_id"
+    t.date     "date_harvested"
+    t.integer  "count_harvested"
+    t.integer  "weight_type_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -81,7 +76,7 @@ ActiveRecord::Schema.define(version: 20140620231120) do
   create_table "plants", force: true do |t|
     t.string   "name"
     t.string   "plant_type"
-    t.string   "group"
+    t.string   "plant_group"
     t.integer  "water_amount_id"
     t.integer  "harvest_type_id"
     t.string   "comment"
@@ -96,6 +91,10 @@ ActiveRecord::Schema.define(version: 20140620231120) do
   end
 
   create_table "water_amounts", force: true do |t|
+    t.string "name"
+  end
+
+  create_table "weight_types", force: true do |t|
     t.string "name"
   end
 

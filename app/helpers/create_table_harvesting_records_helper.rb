@@ -1,0 +1,2 @@
+module CreateTableHarvestingRecordsHelper
+end

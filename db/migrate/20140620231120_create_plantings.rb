@@ -6,7 +6,7 @@ class CreatePlantings < ActiveRecord::Migration
       t.integer :location_id
       t.integer :count_planted
       t.date :date_planted
-       t.text :comment
+      t.text :comment
       t.timestamps
     end
   end

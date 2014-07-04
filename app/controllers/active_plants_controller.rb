@@ -1,10 +1,11 @@
 class ActivePlantsController < ApplicationController
   before_action :set_active_plant, only: [:show, :edit, :update, :destroy]
-
+   require 'date'
+   
   # GET /active_plants
   # GET /active_plants.json
   def index
-    @active_plants = ActivePlant.all
+     @active_plants = ActivePlant.order(:location_id, :plant_id)
   end
 
   # GET /active_plants/1
@@ -14,8 +15,7 @@ class ActivePlantsController < ApplicationController
 
   # GET /active_plants/new
   def new
-    @active_plant = ActivePlant.new
-
+   @active_plant = ActivePlant.new
   end
 
   # GET /active_plants/1/edit
@@ -24,18 +24,19 @@ class ActivePlantsController < ApplicationController
 
   # POST /active_plants
   # POST /active_plants.json
-  def create
-    @active_plant = ActivePlant.new(active_plant_params)
-     puts "active_plant_params="+active_plant_params.inspect
-    respond_to do |format|
+   def create
+      #TODO date
+      puts "active_plant_params="+params.inspect
+      @start_date = Date.civil(params[:range][:"start_date(1i)"].to_i,params[:range][:"start_date(2i)"].to_i,params[:range][:"start_date(3i)"].to_i)
+      @active_plant = ActivePlant.new(active_plant_params)
+      respond_to do |format|
       if @active_plant.save
          #Create a Planting record
-         puts "@active_plant.inspect="+@active_plant.inspect
-         @planting = Planting.create(active_plant_id: @active_plant.id, plant_status_id: active_plant_params[:plant_status_id], location_id: @active_plant.location_id, count_planted: active_plant_params[:count_active], date_planted: Date.today)
-         #
+         @planting = Planting.create(active_plant_id: @active_plant.id, plant_status_id: active_plant_params[:plant_status_id], location_id: @active_plant.location_id, count_planted: active_plant_params[:count_active], date_planted: @start_date, comment: @active_plant.comment)
+         
          @planting.save
-        format.html { redirect_to @active_plant, notice: 'Active plant was successfully created.' }
-        format.json { render :show, plant_status_id: :created, location: @active_plant }
+         format.html { redirect_to @active_plant, notice: 'Active plant was successfully created.  Planting Data saved.' }
+         format.json { render :show, plant_status_id: :created, location: @active_plant }
       else
         format.html { render :new }
         format.json { render json: @active_plant.errors, status: :unprocessable_entity }
@@ -46,8 +47,20 @@ class ActivePlantsController < ApplicationController
   # PATCH/PUT /active_plants/1
   # PATCH/PUT /active_plants/1.json
   def update
-    respond_to do |format|
-      if @active_plant.update(active_plant_params)
+     action_date = Date.civil(params[:range][:"start_date(1i)"].to_i,params[:range][:"start_date(2i)"].to_i,params[:range][:"start_date(3i)"].to_i)
+      if(params[:active_plant][:watered] == "1")
+          puts "$$$$.$$ was watered :)"
+          params[:active_plant][:last_watering_date] = action_date
+       end
+       if(params[:active_plant][:nutrients_added] == "1")
+          puts "$$$$.$$ got nutrients :)"
+          params[:active_plant][:last_nutrient_date] = action_date
+       end          
+     puts "$$$$.$$ Update active_plant_params="+params.inspect
+
+     respond_to do |format|             
+     if @active_plant.update(active_plant_params)
+        #TODO update harvest data if needed.
         format.html { redirect_to @active_plant, notice: 'Active plant was successfully updated.' }
         format.json { render :show, status: :ok, location: @active_plant }
       else
@@ -75,6 +88,6 @@ class ActivePlantsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def active_plant_params
-      params.require(:active_plant).permit(:plant_id, :plant_status_id, :location_id, :soil_id, :count_active, :comment)
+       params.require(:active_plant).permit(:plant_id, :plant_status_id, :location_id, :soil_id, :count_active, :last_watering_date, :last_nutrient_date, :comment)
     end
 end

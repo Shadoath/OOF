@@ -1,0 +1,23 @@
+<div class="row">
+   <div class="small-12 columns">
+      <%= @harvesting_record.active_plant.plant.name %>
+   </div>
+      <div class="small-12 columns">
+      <%= @harvesting_record.active_plant.location.name %>
+   </div>
+   <div class="small-12 columns">
+      <%= @harvesting_record.date_harvested %>
+   </div>
+   <div class="small-12 columns">
+      <%= @harvesting_record.count_harvested %>
+   </div>
+
+<p id="notice"><%= notice %></p>
+
+
+
+<%= link_to 'Edit', edit_harvesting_record_path(@harvesting_record) %> |
+<%= link_to 'Back', harvesting_records_path %>
+      
+   </div>
+</div>

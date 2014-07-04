@@ -1,1 +1,0 @@
-json.extract! @daily_datum, :id, :daily_date, :temp_low, :temp_high, :eggs_collected, :total_ducks, :hours_of_daylight, :sunrise, :moon_phase_id, :moon_percent, :weather, :rained, :created_at, :updated_at

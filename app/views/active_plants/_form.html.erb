@@ -16,6 +16,9 @@
       <%= f.collection_select :location_id, Location.all, :id, :name,   prompt: "Choose wisely", label: "Location" %>
       <%= f.input :plant_status_id, collection: PlantStatus.all, prompt: "Choose wisely" %>
       <%= f.input :count_active %><br>
+      <td> Date Planted </td>
+      <%= date_select('range', 'start_date', :order => [:month, :day, :year])%>
+
       <%= f.input :comment %><br>
       <%= f.button :submit %>
     <% end %>

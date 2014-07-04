@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="small-12 columns">
+    <%= simple_form_for(@active_plant) do |f| %>
+      <% if @active_plant.errors.any? %>
+        <div class="div.alert-box.alert.round" id="error_explanation">
+          <h2><%= pluralize(@active_plant.errors.count, "error") %> prohibited this active plant from being saved:</h2>
+          <ul>
+      <% @active_plant.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+      </div>
+      <% end %>
+      <div class="small-6 columns">
+         <div class="small-12 columns">
+            <%= @active_plant.plant.name %>
+         </div>
+         <div class="small-12 columns">
+            <%= @active_plant.location.name %>
+         </div>
+     </div>
+      <div class="small-6 columns">
+         <%= @active_plant.plant_status.name %>
+      </div>
+     <%= f.input :plant_status_id, collection: PlantStatus.all, label: "Change Status..." %>
+     <%= f.input :count_active %><br>
+      <div class="small-6 columns">
+         <div class="small-12 columns">
+            <%= f.input :watered, as: :boolean %><br>
+        </div>
+        <div class="small-12 columns">
+           <%= f.input :nutrients_added, as: :boolean %><br>
+        </div>
+     </div>
+     <div class="small-6 columns">
+        Date of action:
+        <%= date_select('range', 'start_date', :order => [:month, :day, :year])%>
+     </div>
+     <%= f.input :comment %><br>
+     <%= f.button :submit %>
+    <% end %>
+  </div>
+</div>
+

@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
+  resources :harvesting_records
+
   resources :plantings
 
   resources :active_plants
 
   resources :harvest_types
 
-  resources :daily_data
+  resources :daily_records
 
   resources :soils
 

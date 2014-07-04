@@ -1,33 +1,42 @@
-<h1>Listing active_plants</h1>
+<div class="row">
+  <div class="small-12 columns">
+      <h1>Listing Active Plants</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Plant</th>
+            <th>Status</th>
+            <th>Location</th>
+            <th>Last watering</th>
+            <th>Last Nutrients</th>
+            <th>Count active</th>
+            <th>Comment</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @active_plants.each do |active_plant| %>
+            <tr>
+               <% if active_plant.plant_id? %>
+               <td><%= active_plant.plant.name %></td>
+               <td><%= active_plant.plant_status.name if active_plant.plant_status_id %></td>
+               <td><%= active_plant.location.name %></td>
+               <td><%= active_plant.last_watering_date %></td>
+               <td><%= active_plant.last_nutrient_date %></td>
+               <td><%= active_plant.count_active %></td>
+               <td><%= active_plant.comment %></td>
+               <td><%= link_to 'Show', active_plant %></td>
+               <% end %>
+               <td><%= link_to 'Edit', edit_active_plant_path(active_plant) %></td>
+               <td><%= link_to 'Destroy', active_plant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
 
-<table>
-  <thead>
-    <tr>
-      <th>Plant</th>
-      <th>Status</th>
-      <th>Location</th>
-      <th>Count active</th>
-      <th>Comment</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+      <br>
 
-  <tbody>
-    <% @active_plants.each do |active_plant| %>
-      <tr>
-         <td><%= active_plant.plant.name %></td>
-         <td><%= active_plant.plant_status.name if active_plant.plant_status_id %></td>
-         <td><%= active_plant.location.name %></td>
-        <td><%= active_plant.count_active %></td>
-        <td><%= active_plant.comment %></td>
-        <td><%= link_to 'Show', active_plant %></td>
-        <td><%= link_to 'Edit', edit_active_plant_path(active_plant) %></td>
-        <td><%= link_to 'Destroy', active_plant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Active plant', new_active_plant_path %>
+      <%= link_to 'New Active plant', new_active_plant_path %>
+     
+   </div>
+</div>

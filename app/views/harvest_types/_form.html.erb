@@ -1,4 +1,6 @@
-<%= form_for(@harvest_type) do |f| %>
+<div class="row">
+  <div class="small-12 columns">
+<%= simple_form_for(@harvest_type) do |f| %>
   <% if @harvest_type.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@harvest_type.errors.count, "error") %> prohibited this harvest_type from being saved:</h2>
@@ -11,11 +13,10 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+   <%= f.input :name %>
+
+  <%= f.button :submit %>
+
 <% end %>
+   </div>
+   </div>

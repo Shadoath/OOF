@@ -1,34 +1,38 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="small-12 columns">
+      <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @plant.name %>
-</p>
+      <p>
+        <strong>Name:</strong>
+        <%= @plant.name %>
+      </p>
 
-<p>
-  <strong>Type:</strong>
-  <%= @plant.plant_type %>
-</p>
+      <p>
+        <strong>Type:</strong>
+        <%= @plant.plant_type %>
+      </p>
 
-<p>
-  <strong>Group:</strong>
-  <%= @plant.plant_group %>
-</p>
+      <p>
+        <strong>Group:</strong>
+        <%= @plant.plant_group %>
+      </p>
 
-<p>
-  <strong>Harvest Type:</strong>
-   <%= @plant.harvest_type.name %>
-</p>
+      <p>
+        <strong>Harvest Type:</strong>
+         <%= @plant.harvest_type.name %>
+      </p>
 
-<p>
-  <strong>Water amount:</strong>
-   <%= @plant.water_amount.name %>
-</p>
+      <p>
+        <strong>Water amount:</strong>
+         <%= @plant.water_amount.name %>
+      </p>
 
-<p>
-  <strong>Comment:</strong>
-  <%= @plant.comment %>
-</p>
+      <p>
+        <strong>Comment:</strong>
+        <%= @plant.comment %>
+      </p>
+   </div>
+</div>
 
 <%= link_to 'Edit', edit_plant_path(@plant) %> |
-<%= link_to 'Back', plants_path %>
+<%= link_to 'All Plants', plants_path %>

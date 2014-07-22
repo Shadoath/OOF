@@ -14,6 +14,8 @@ class HarvestingRecordsController < ApplicationController
 
   # GET /harvesting_records/new
   def new
+     puts "AP params =  #{params}"+ params.to_s
+    @selectedActivePlantID = params[:format]
     @harvesting_record = HarvestingRecord.new
   end
 
@@ -24,11 +26,18 @@ class HarvestingRecordsController < ApplicationController
   # POST /harvesting_records
   # POST /harvesting_records.json
   def create
+     puts "params = "+params.inspect
+     puts "harvesting_record_params = "+harvesting_record_params.inspect
     @harvesting_record = HarvestingRecord.new(harvesting_record_params)
-
+     activePlant = ActivePlant.find(harvesting_record_params[:active_plant_id])
+     if activePlant.plant.harvest_type.name == "Single Harvest"
+        puts "Single Harvest reducing active plant count."
+        activePlant.count_active - harvesting_record_params[:count_harvested].to_i
+        activePlant.save
+     end
     respond_to do |format|
       if @harvesting_record.save
-        format.html { redirect_to @harvesting_record, notice: 'Create table harvesting record was successfully created.' }
+        format.html { redirect_to @harvesting_record, notice: 'Harvesting record was successfully created.' }
         format.json { render :show, status: :created, location: @harvesting_record }
       else
         format.html { render :new }
@@ -42,7 +51,7 @@ class HarvestingRecordsController < ApplicationController
   def update
     respond_to do |format|
       if @harvesting_record.update(harvesting_record_params)
-        format.html { redirect_to @harvesting_record, notice: 'Create table harvesting record was successfully updated.' }
+        format.html { redirect_to @harvesting_record, notice: 'Harvesting record was successfully updated.' }
         format.json { render :show, status: :ok, location: @harvesting_record }
       else
         format.html { render :edit }
@@ -56,7 +65,7 @@ class HarvestingRecordsController < ApplicationController
   def destroy
     @harvesting_record.destroy
     respond_to do |format|
-      format.html { redirect_to harvesting_records_url, notice: 'Create table harvesting record was successfully destroyed.' }
+      format.html { redirect_to harvesting_records_url, notice: 'Harvesting record was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

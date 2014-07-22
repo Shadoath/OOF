@@ -1,25 +1,23 @@
 <div class="row">
-  <div class="small-12 columns">
-    <%= simple_form_for(@plant) do |f| %>
-      <% if @plant.errors.any? %>
-        <div class="div.alert-box.alert.round" id="error_explanation">
-          <h2><%= pluralize(@plant.errors.count, "error") %> prohibited this plant from being saved:</h2>
-          <ul>
-      <% @plant.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+   <div class="small-12 columns">
+      <%= simple_form_for(@plant) do |f| %>
+         <% if @plant.errors.any? %>
+            <div class="div.alert-box.alert.round" id="error_explanation">
+               <h2><%= pluralize(@plant.errors.count, "error") %> prohibited this plant from being saved:</h2>
+               <ul>
+                  <% @plant.errors.full_messages.each do |message| %>
+                     <li><%= message %></li>
+                  <% end %>
+               </ul>
+            </div>
+         <% end %>
+         <%= f.input :name %>
+         <%= f.input :plant_type %>
+         <%= f.input :plant_group, label: "Plant Group (not working...)" %>
+         <%= f.association :harvest_type, collection: HarvestType.all, prompt: false %>
+         <%= f.association :water_amount, collection: WaterAmount.all, prompt: false %>
+         <%= f.input :comment %>
+         <%= f.button :submit %>
       <% end %>
-      </ul>
-        </div>
-      <% end %>
-      <%= f.input :name %>
-      <%= f.input :plant_type %>
-      <%= f.input :plant_group, as: :string %>
-      <%= f.association :harvest_type, collection: HarvestType.all, prompt: false %>
-      <%= f.association :water_amount, collection: WaterAmount.all, prompt: false %>
-      <%= f.input :comment %>
-      <%= f.button :submit %>
-    <% end %>
-  </div>
+   </div>
 </div>
-
-

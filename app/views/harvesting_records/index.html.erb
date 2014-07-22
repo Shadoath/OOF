@@ -16,7 +16,7 @@
         <tbody>
           <% @harvesting_records.each do |harvesting_record| %>
             <tr>
-               <% if harvesting_record.active_plant_id %>
+               <% if harvesting_record.active_plant %>
                   <td><%= harvesting_record.active_plant.plant.name %></td>
                   <td><%= harvesting_record.active_plant.location.name %></td>
                   <td><%= harvesting_record.date_harvested %></td>

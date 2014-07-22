@@ -1,15 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  type: 
-  group: MyString
-  water_amount: MyString
-  comment: MyString
-
-two:
-  name: MyString
-  type: 
-  group: MyString
-  water_amount: MyString
-  comment: MyString
+<% 10.times do |n| %>
+plant_<%= n %>:
+  name: <%= "plant#{n}" %> 
+  plant_type: <%= "type#{n}" %>
+  harvest_type_id: <%= n %>
+  plant_group: <%= "group#{n}" %>
+  water_amount_id: <%= n %>
+  comment: <%= "comment #{n}" %>
+<% end %>

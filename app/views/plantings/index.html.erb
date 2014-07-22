@@ -15,9 +15,9 @@
   <tbody>
     <% @plantings.each do |planting| %>
       <tr>
-         <td><%= planting.active_plant.plant.name if planting.active_plant_id%></td>
-         <td><%= planting.plant_status.name if planting.plant_status_id %></td>
-         <td><%= planting.location.name if planting.location_id %></td>
+         <td><%= planting.active_plant.plant.name if planting.active_plant%></td>
+         <td><%= planting.plant_status.name if planting.plant_status %></td>
+         <td><%= planting.location.name if planting.location %></td>
         <td><%= planting.count_planted %></td>
         <td><%= planting.date_planted %></td>
         <td><%= link_to 'Show', planting %></td>

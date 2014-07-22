@@ -1,36 +1,22 @@
-<%= form_for(@planting) do |f| %>
-  <% if @planting.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@planting.errors.count, "error") %> prohibited this planting from being saved:</h2>
-      <ul>
-      <% @planting.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<div class="row">
+  <div class="small-12 columns">
+     <%= simple_form_for(@planting) do |f| %>
+        <% if @planting.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@planting.errors.count, "error") %> prohibited this planting from being saved:</h2>
+            <ul>
+            <% @planting.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+     <% end %>
+     <%= f.input :active_plant_id, collection: ActivePlant.all, label_method: lambda { |ap| "#{ap.plant.name} | #{ap.location.name}" }, prompt: "Choose wisely" %>
+     <%= f.input :location_id, collection: Location.all, label_method: lambda { |w| "#{w.name}" } %>
+     <%= f.input :plant_status_id, collection: PlantStatus.all, label_method: lambda { |w| "#{w.name}" } %>
+     <%= f.input :count_planted %>
+     <%= f.input :date_planted %>
 
-  <div class="field">
-    <%= f.label :active_plant_id %><br>
-    <%= f.number_field :active_plant_id %>
-  </div>
-  <div class="field">
-    <%= f.label :plant_status_id %><br>
-    <%= f.text_field :plant_status_id %>
-  </div>
-  <div class="field">
-    <%= f.label :location_id %><br>
-    <%= f.text_field :location_id %>
-  </div>
-  <div class="field">
-    <%= f.label :count_planted %><br>
-    <%= f.text_field :count_planted %>
-  </div>
-  <div class="field">
-    <%= f.label :date_planted %><br>
-    <%= f.date_select :date_planted %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+     <%= f.button :submit %>
+
+   <% end %>

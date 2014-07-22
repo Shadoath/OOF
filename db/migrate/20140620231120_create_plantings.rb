@@ -5,6 +5,8 @@ class CreatePlantings < ActiveRecord::Migration
       t.integer :plant_status_id
       t.integer :location_id
       t.integer :count_planted
+      t.integer :rows_planted
+      t.integer :row_length
       t.date :date_planted
       t.text :comment
       t.timestamps

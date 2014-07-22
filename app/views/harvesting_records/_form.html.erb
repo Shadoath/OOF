@@ -12,9 +12,12 @@
       </ul>
         </div>
       <% end %>
-     <%= f.input :active_plant_id, collection: ActivePlant.all, label_method: lambda { |ap| "#{ap.plant.name} | #{ap.location.name}" }, prompt: "Choose wisely" %>
+     <% if @selectedActivePlantID %>
+        <%= f.input :active_plant_id, collection: ActivePlant.all, selected: @selectedActivePlantID, label_method: lambda { |ap| "#{ap.plant.name} | #{ap.location.name}" }, prompt: "Choose wisely" %>
+     <% else %>
+        <%= f.input :active_plant_id, collection: ActivePlant.all, label_method: lambda { |ap| "#{ap.plant.name} | #{ap.location.name}" }, prompt: "Choose wisely" %>
+     <% end %>
      <%= f.input :date_harvested %>
-     <td> TODO harvest Type of selected Plant </td>
      <%= f.input :count_harvested %>
      <%= f.input :weight_type_id, collection: WeightType.all, label_method: lambda { |w| "#{w.name}" } %>
      <%= f.button :submit %>

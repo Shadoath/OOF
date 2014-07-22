@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140701153140) do
+ActiveRecord::Schema.define(version: 20140710152559) do
+
+  create_table "active_plant_records", force: true do |t|
+    t.integer  "active_plant_id"
+    t.date     "process_date"
+    t.boolean  "nutrients_added"
+    t.integer  "count_active"
+    t.text     "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "active_plants", force: true do |t|
     t.integer  "plant_id"
@@ -21,8 +31,20 @@ ActiveRecord::Schema.define(version: 20140701153140) do
     t.text     "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.date     "last_watering_date"
-    t.date     "last_nutrient_date"
+  end
+
+  create_table "daily_records", force: true do |t|
+    t.date    "daily_date"
+    t.integer "temp_low"
+    t.integer "temp_high"
+    t.integer "eggs_collected"
+    t.integer "total_ducks"
+    t.time    "hours_of_daylight"
+    t.time    "sunrise"
+    t.integer "moon_phase_id"
+    t.integer "moon_percent"
+    t.text    "weather"
+    t.boolean "rained"
   end
 
   create_table "harvest_types", force: true do |t|
@@ -36,6 +58,7 @@ ActiveRecord::Schema.define(version: 20140701153140) do
     t.date     "date_harvested"
     t.integer  "count_harvested"
     t.integer  "weight_type_id"
+    t.text     "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -44,7 +67,7 @@ ActiveRecord::Schema.define(version: 20140701153140) do
     t.string   "name"
     t.integer  "soil_id"
     t.integer  "size"
-    t.string   "comment"
+    t.text     "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -67,6 +90,8 @@ ActiveRecord::Schema.define(version: 20140701153140) do
     t.integer  "plant_status_id"
     t.integer  "location_id"
     t.integer  "count_planted"
+    t.integer  "rows_planted"
+    t.integer  "row_length"
     t.date     "date_planted"
     t.text     "comment"
     t.datetime "created_at"
@@ -91,7 +116,9 @@ ActiveRecord::Schema.define(version: 20140701153140) do
   end
 
   create_table "water_amounts", force: true do |t|
-    t.string "name"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "weight_types", force: true do |t|

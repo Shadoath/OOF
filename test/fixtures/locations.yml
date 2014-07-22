@@ -1,15 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  sub_name: MyString
+  name: Big Burtha
   soil_id: 1
   size: 1
-  comment: MyString
+  comment: Water!
 
 two:
-  name: MyString
-  sub_name: MyString
+  name: Field
   soil_id: 1
   size: 1
-  comment: MyString
+  comment: commented Yo

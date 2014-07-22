@@ -4,8 +4,7 @@ class CreateLocations < ActiveRecord::Migration
       t.string :name
       t.integer :soil_id
       t.integer :size
-      t.string :comment
-
+      t.text :comment
       t.timestamps
     end
   end

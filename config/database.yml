@@ -6,12 +6,16 @@
 #
 default: &default
   adapter: postgresql
+  host: ec2-54-221-223-92.compute-1.amazonaws.com
+  username: lnpxhmpjamgokg
+  password: rmDHF6Rh_j1O-YW0q8Ff0xaaD3
   pool: 5
   timeout: 5000
 
 development:
   <<: *default
   database: db/development.postgresql
+
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

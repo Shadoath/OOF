@@ -28,21 +28,21 @@ puts "MoonPhase Seeded"
 
 PlantStatus.delete_all
 plantStatuses = ["Dead", "Seed", "Sprouted", "Flower", "Harvestable", "Drying", "Finished"]
-plantStatuses.each |ps| do 
+plantStatuses.each do |ps|  
    PlantStatus.create(name: ps);
 end
 puts "PlantStatus Seeded"
 
 WaterAmount.delete_all
 waterAmounts = ["Light", "Medium", "Heavy", "Bucket loads! (trees)"]
-waterAmounts.each |wa| do
+waterAmounts.each do |wa| 
    WaterAmount.create(name: wa)
 end
 puts "WaterAmount Seeded"
 
 Soil.delete_all
 soils = ["Basic Dirt", "Dirt + Alpaca manure", "Dirt + composted manure", "Dirt + worm tea", "Potting mixture"]
-soils.each |soil| do 
+soils.each do |soil|
    Soil.create(name: soil)
 end
 dirtSoil = Soil.first
@@ -50,7 +50,7 @@ puts "Soil Seeded"
 
 HarvestType.delete_all
 harvestTypes = ["Single Harvest", "Continuous Harvest"]
-harvestTypes.each |harvestType| do
+harvestTypes.each do |harvestType|
    HarvestType.create(name: harvestType)
 end
 puts "HarvestType Seeded"
@@ -76,19 +76,19 @@ Location.create(name: "Big Burtha => Hanging Planter 2 (SE)", soil_id: dirtSoil.
 Location.create(name: "Big Burtha => Hanging Planter 3 (NW)", soil_id: dirtSoil.id, size: 6)
 Location.create(name: "Big Burtha => Hanging Planter 4 (SW)", soil_id: dirtSoil.id, size: 6)
 
-6.times |i| do 
+9.times do |i| 
    Location.create(name: "Herb Field => Row #{i+1}", soil_id: dirtSoil.id, size: 53)
 end
 
-19.times |i| do 
+20.times do |i| 
    Location.create(name: "North Field => Row #{i+1}", soil_id: dirtSoil.id, size: 256)
 end
 
-4.times |i| do 
+4.times do |i| 
    Location.create(name: "Center Field => Row #{i+1}", soil_id: dirtSoil.id, size: 128)
 end
 
-8.times |i| do 
+10.times do |i| 
    Location.create(name: "South Field => Row #{i+1}", soil_id: dirtSoil.id, size: 256)
 end
 
@@ -115,9 +115,6 @@ Location.create(name: "Sunflowers", soil_id: dirtSoil.id, size: 64)
 
 Location.create(name: "Pumpkin/Melon Patch", soil_id: dirtSoil.id, size: 200)
 
-6.times |i| do 
-   Location.create(name: "Medicinal Herbs => Row #{i+1}", soil_id: dirtSoil.id, size: 200)
-end
 puts "Location Seeded"
 
 Plant.delete_all

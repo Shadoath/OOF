@@ -15,16 +15,17 @@ ActiveRecord::Schema.define(version: 20140710152559) do
 
   create_table "active_plant_records", force: true do |t|
     t.integer  "active_plant_id"
-    t.date     "process_date"
-    t.boolean  "nutrients_added"
+    t.date     "date_processed"
     t.integer  "count_active"
+    t.integer  "plant_status_id"
+    t.boolean  "nutrients_added"
     t.text     "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "active_plants", force: true do |t|
-    t.integer  "plant_id"
+    t.integer  "active_plant_id"
     t.integer  "plant_status_id"
     t.integer  "location_id"
     t.integer  "count_active"

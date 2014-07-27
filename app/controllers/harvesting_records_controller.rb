@@ -78,6 +78,6 @@ class HarvestingRecordsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def harvesting_record_params
-       params[:harvesting_record].permit(:active_plant_id, :date_harvested, :count_harvested, :weight_type_id)
+       params[:harvesting_record].permit(:active_plant_id, :date_harvested, :count_harvested, :weight_type_id, :comment)
     end
 end

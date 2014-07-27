@@ -27,36 +27,32 @@ MoonPhase.create(name: "Dark/Blue Moon", image: 'm28.gif');
 puts "MoonPhase Seeded"
 
 PlantStatus.delete_all
-PlantStatus.create(name: "Dead");
-PlantStatus.create(name: "Seed");
-PlantStatus.create(name: "Sprouted");
-vedgePlantStatus = PlantStatus.create(name: "Vedge");
-PlantStatus.create(name: "Flower");
-PlantStatus.create(name: "Harvest Ready");
-PlantStatus.create(name: "Drying");
-PlantStatus.create(name: "Finished");
+plantStatuses = ["Dead", "Seed", "Sprouted", "Flower", "Harvestable", "Drying", "Finished"]
+plantStatuses.each |ps| do 
+   PlantStatus.create(name: ps);
+end
 puts "PlantStatus Seeded"
 
 WaterAmount.delete_all
-WaterAmount.create(name: "Light")
-mediumWaterAmount = WaterAmount.create(name: "Medium")
-WaterAmount.create(name: "Heavy")
-WaterAmount.create(name: "Bucket loads! (trees)")
+waterAmounts = ["Light", "Medium", "Heavy", "Bucket loads! (trees)"]
+waterAmounts.each |wa| do
+   WaterAmount.create(name: wa)
+end
 puts "WaterAmount Seeded"
 
 Soil.delete_all
-dirtSoil = Soil.create(name: "Basic Dirt")
-Soil.create(name: "Dirt + Alpaca manure")
-Soil.create(name: "Dirt + composted manure")
-Soil.create(name: "Dirt + worm tea")
-Soil.create(name: "Potting mixture")
+soils = ["Basic Dirt", "Dirt + Alpaca manure", "Dirt + composted manure", "Dirt + worm tea", "Potting mixture"]
+soils.each |soil| do 
+   Soil.create(name: soil)
+end
+dirtSoil = Soil.first
 puts "Soil Seeded"
 
 HarvestType.delete_all
-HarvestType.create(name: "Single Harvest")
-continuousHarvest = HarvestType.create(name: "Continuous Harvest")
-#HarvestType.create(name: "Weekly Harvest")
-#HarvestType.create(name: "Annual Harvest")
+harvestTypes = ["Single Harvest", "Continuous Harvest"]
+harvestTypes.each |harvestType| do
+   HarvestType.create(name: harvestType)
+end
 puts "HarvestType Seeded"
 
 WeightType.delete_all
@@ -80,46 +76,21 @@ Location.create(name: "Big Burtha => Hanging Planter 2 (SE)", soil_id: dirtSoil.
 Location.create(name: "Big Burtha => Hanging Planter 3 (NW)", soil_id: dirtSoil.id, size: 6)
 Location.create(name: "Big Burtha => Hanging Planter 4 (SW)", soil_id: dirtSoil.id, size: 6)
 
-Location.create(name: "Herb Field => Row 1", soil_id: dirtSoil.id, size: 53)
-Location.create(name: "Herb Field => Row 2", soil_id: dirtSoil.id, size: 53)
-Location.create(name: "Herb Field => Row 3", soil_id: dirtSoil.id, size: 53)
-Location.create(name: "Herb Field => Row 4", soil_id: dirtSoil.id, size: 53)
-Location.create(name: "Herb Field => Row 5", soil_id: dirtSoil.id, size: 53)
-Location.create(name: "Herb Field => Row 6", soil_id: dirtSoil.id, size: 53)
+6.times |i| do 
+   Location.create(name: "Herb Field => Row #{i+1}", soil_id: dirtSoil.id, size: 53)
+end
 
-Location.create(name: "North Field => Row 1 (North most)", soil_id: dirtSoil.id, size: 256)
-Location.create(name: "North Field => Row 2", soil_id: dirtSoil.id, size: 256)
-Location.create(name: "North Field => Row 3", soil_id: dirtSoil.id, size: 256)
-Location.create(name: "North Field => Row 4", soil_id: dirtSoil.id, size: 256)
-Location.create(name: "North Field => Row 5", soil_id: dirtSoil.id, size: 256)
-Location.create(name: "North Field => Row 6", soil_id: dirtSoil.id, size: 256)
-Location.create(name: "North Field => Row 7", soil_id: dirtSoil.id, size: 256)
-Location.create(name: "North Field => Row 8", soil_id: dirtSoil.id, size: 256)
-Location.create(name: "North Field => Row 9", soil_id: dirtSoil.id, size: 256)
-Location.create(name: "North Field => Row 10", soil_id: dirtSoil.id, size: 256)
-Location.create(name: "North Field => Row 11", soil_id: dirtSoil.id, size: 256)
-Location.create(name: "North Field => Row 12", soil_id: dirtSoil.id, size: 256)
-Location.create(name: "North Field => Row 13", soil_id: dirtSoil.id, size: 256)
-Location.create(name: "North Field => Row 14", soil_id: dirtSoil.id, size: 256)
-Location.create(name: "North Field => Row 15", soil_id: dirtSoil.id, size: 256)
-Location.create(name: "North Field => Row 16", soil_id: dirtSoil.id, size: 256)
-Location.create(name: "North Field => Row 17", soil_id: dirtSoil.id, size: 256)
-Location.create(name: "North Field => Row 18", soil_id: dirtSoil.id, size: 256)
-Location.create(name: "North Field => Row 19", soil_id: dirtSoil.id, size: 256)
+19.times |i| do 
+   Location.create(name: "North Field => Row #{i+1}", soil_id: dirtSoil.id, size: 256)
+end
 
-Location.create(name: "Center Field => Row 1", soil_id: dirtSoil.id, size: 128)
-Location.create(name: "Center Field => Row 2", soil_id: dirtSoil.id, size: 128)
-Location.create(name: "Center Field => Row 3", soil_id: dirtSoil.id, size: 128)
-Location.create(name: "Center Field => Row 4", soil_id: dirtSoil.id, size: 128)
+4.times |i| do 
+   Location.create(name: "Center Field => Row #{i+1}", soil_id: dirtSoil.id, size: 128)
+end
 
-Location.create(name: "South Field => Row 1", soil_id: dirtSoil.id, size: 256)
-Location.create(name: "South Field => Row 2", soil_id: dirtSoil.id, size: 256)
-Location.create(name: "South Field => Row 3", soil_id: dirtSoil.id, size: 256)
-Location.create(name: "South Field => Row 4", soil_id: dirtSoil.id, size: 256)
-Location.create(name: "South Field => Row 5", soil_id: dirtSoil.id, size: 256)
-Location.create(name: "South Field => Row 6", soil_id: dirtSoil.id, size: 256)
-Location.create(name: "South Field => Row 7 (South most)", soil_id: dirtSoil.id, size: 256)
-Location.create(name: "South Field => Row 8 (East)", soil_id: dirtSoil.id, size: 256)
+8.times |i| do 
+   Location.create(name: "South Field => Row #{i+1}", soil_id: dirtSoil.id, size: 256)
+end
 
 Location.create(name: "Outside Hoop Beds => 1 (North-east)", soil_id: dirtSoil.id, size: 64)
 Location.create(name: "Outside Hoop Beds => 2", soil_id: dirtSoil.id, size: 64)
@@ -143,19 +114,21 @@ Location.create(name: "Starter GH", soil_id: dirtSoil.id, size: 64)
 Location.create(name: "Sunflowers", soil_id: dirtSoil.id, size: 64)
 
 Location.create(name: "Pumpkin/Melon Patch", soil_id: dirtSoil.id, size: 200)
+
+6.times |i| do 
+   Location.create(name: "Medicinal Herbs => Row #{i+1}", soil_id: dirtSoil.id, size: 200)
+end
 puts "Location Seeded"
 
 Plant.delete_all
-thymePlant = Plant.create(name: "Thyme", plant_type: "Perenials", plant_group: "Herb", harvest_type_id: continuousHarvest.id, water_amount_id: mediumWaterAmount.id) 
-Plant.create(name: "Rosemerry", plant_type: "Perenials", plant_group: "Herb", harvest_type_id: continuousHarvest.id, water_amount_id: mediumWaterAmount.id) 
-Plant.create(name: "Sage", plant_type: "Perenials", plant_group: "Herb", harvest_type_id: continuousHarvest.id, water_amount_id: mediumWaterAmount.id) 
-Plant.create(name: "Oregano", plant_type: "Perenials", plant_group: "Herb", harvest_type_id: continuousHarvest.id, water_amount_id: mediumWaterAmount.id) 
-
+#thymePlant = Plant.create(name: "Thyme", plant_type: "Perenials", plant_group: "Herb", harvest_type_id: continuousHarvest.id, water_amount_id: mediumWaterAmount.id) 
+#Plant.create(name: "Rosemerry", plant_type: "Perenials", plant_group: "Herb", harvest_type_id: continuousHarvest.id, water_amount_id: mediumWaterAmount.id) 
+#Plant.create(name: "Sage", plant_type: "Perenials", plant_group: "Herb", harvest_type_id: continuousHarvest.id, water_amount_id: mediumWaterAmount.id) 
+#Plant.create(name: "Oregano", plant_type: "Perenials", plant_group: "Herb", harvest_type_id: continuousHarvest.id, water_amount_id: mediumWaterAmount.id) 
 puts "Plant Seeded"
 
-
 ActivePlant.delete_all
-ActivePlant.create(plant_id: thymePlant.id, location_id: northWallBB.id, plant_status_id: vedgePlantStatus.id, count_active: 8, comment: "Testing plant") 
+#ActivePlant.create(plant_id: thymePlant.id, location_id: northWallBB.id, plant_status_id: vedgePlantStatus.id, count_active: 8, comment: "Testing plant") 
 puts "ActivePlant Seeded"
 
 

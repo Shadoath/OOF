@@ -13,7 +13,7 @@
          <% end %>
          <%= f.input :name %>
          <%= f.input :plant_type %>
-         <%= f.input :plant_group" %>
+         <%= f.input :plant_group %>
          <%= f.association :harvest_type, collection: HarvestType.all, prompt: false %>
          <%= f.association :water_amount, collection: WaterAmount.all, prompt: false %>
          <%= f.input :comment %>

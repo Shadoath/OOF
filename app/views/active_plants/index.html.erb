@@ -8,8 +8,6 @@
             <th>Status</th>
             <th>Location</th>
             <th>Harvest Type</th>
-            <th>Last watering</th>
-            <th>Last Nutrients</th>
             <th>Count active</th>
             <th>Comment</th>
             <th colspan="1"></th>
@@ -24,8 +22,6 @@
                <td><%= link_to active_plant.location.name, location_path(active_plant.location) %></td>
                <td><%= link_to active_plant.plant.harvest_type.name, harvest_type_path(active_plant.plant.harvest_type) %></td>
 
-               <td><%= active_plant.last_watering_date %></td>
-               <td><%= active_plant.last_nutrient_date %></td>
                <td><%= active_plant.count_active %></td>
                <td><%= active_plant.comment %></td>
                <td><%= link_to 'Show', active_plant %>

@@ -2,58 +2,58 @@
 
 <p>
   <strong>Daily date:</strong>
-  <%= @daily_records.daily_date %>
+  <%= @daily_record.daily_date %>
 </p>
 
 <p>
   <strong>Temp low:</strong>
-  <%= @daily_records.temp_low %>
+  <%= @daily_record.temp_low %>
 </p>
 
 <p>
   <strong>Temp high:</strong>
-  <%= @daily_records.temp_high %>
+  <%= @daily_record.temp_high %>
 </p>
 
 <p>
   <strong>Eggs collected:</strong>
-  <%= @daily_records.eggs_collected %>
+  <%= @daily_record.eggs_collected %>
 </p>
 
 <p>
   <strong>Total ducks:</strong>
-  <%= @daily_records.total_ducks %>
+  <%= @daily_record.total_ducks %>
 </p>
 
 <p>
   <strong>Hours of daylight:</strong>
-  <%= @daily_records.hours_of_daylight %>
+  <%= @daily_record.hours_of_daylight %>
 </p>
 
 <p>
   <strong>Sunrise:</strong>
-  <%= @daily_records.sunrise %>
+  <%= @daily_record.sunrise %>
 </p>
 
 <p>
   <strong>Moon phase:</strong>
-  <%= @daily_records.moon_phase_id %>
+  <%= @daily_record.moon_phase_id %>
 </p>
 
 <p>
   <strong>Moon percent:</strong>
-  <%= @daily_records.moon_percent %>
+  <%= @daily_record.moon_percent %>
 </p>
 
 <p>
   <strong>Weather:</strong>
-  <%= @daily_records.weather %>
+  <%= @daily_record.weather %>
 </p>
 
 <p>
-  <strong>Rained:</strong>
-  <%= @daily_records.rained %>
+  <strong>Precipitation:</strong>
+  <%= @daily_record.precipitation %>
 </p>
 
-<%= link_to 'Edit', edit_daily_records_path(@daily_records) %> |
-<%= link_to 'Back', daily_data_path %>
+<%= link_to 'Edit', edit_daily_record_path(@daily_record) %> |
+<%= link_to 'All Records', daily_records_path %>

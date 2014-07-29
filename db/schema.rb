@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20140710152559) do
   end
 
   create_table "active_plants", force: true do |t|
-    t.integer  "active_plant_id"
+    t.integer  "plant_id"
     t.integer  "plant_status_id"
     t.integer  "location_id"
     t.integer  "count_active"
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20140710152559) do
     t.integer "moon_phase_id"
     t.integer "moon_percent"
     t.text    "weather"
-    t.boolean "rained"
+    t.integer "precipitation"
   end
 
   create_table "harvest_types", force: true do |t|

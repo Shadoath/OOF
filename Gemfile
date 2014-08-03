@@ -48,4 +48,12 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 #development
-gem 'unicorn'
+
+#Testing
+gem 'cucumber-rails', :require => false
+  # database_cleaner is not required, but highly recommended
+gem 'database_cleaner'
+gem 'factory_girl_rails'
+
+gem 'faker'
+gem 'capybara-webkit'

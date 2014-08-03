@@ -1,4 +1,6 @@
-  <% if @daily_record.errors.any? %>
+<div class="row">
+   <div  class="small-12">
+<% if @daily_record.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@daily_record.errors.count, "error") %> prohibited this daily records from being saved:</h2>
 
@@ -9,7 +11,7 @@
       </ul>
     </div>
   <% end %>
-<%= form_for(@daily_record) do |f| %>
+<%= simple_form_for(@daily_record) do |f| %>
 
   <div class="field">
     <%= f.label :daily_date %><br>
@@ -39,10 +41,9 @@
     <%= f.label :sunrise %><br>
     <%= f.time_select :sunrise %>
   </div>
-  <div class="field">
     <%= f.label :moon_phase_id %><br>
-    <%= f.number_field :moon_phase_id %>
-  </div>
+   <%= f.collection_select :moon_phase_id, MoonPhase.all, :id, :name, prompt: "Choose wisely" %>
+
   <div class="field">
     <%= f.label :moon_percent %><br>
     <%= f.number_field :moon_percent %>
@@ -52,10 +53,12 @@
     <%= f.text_field :weather %>
   </div>
   <div class="field">
-    <%= f.label :rained %><br>
-    <%= f.check_box :rained %>
+    <%= f.label :precipitation %><br>
+     <%= f.input :precipitation, collection: 1..10, include_blank: false %>
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+      </div>
+   </div>

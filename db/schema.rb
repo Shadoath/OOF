@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20140803155816) do
   end
 
   create_table "active_plants", force: true do |t|
-    t.integer  "active_plant_id"
+    t.integer  "plant_id"
     t.integer  "plant_status_id"
     t.integer  "location_id"
     t.integer  "count_active"

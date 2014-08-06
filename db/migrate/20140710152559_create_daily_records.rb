@@ -11,7 +11,7 @@ class CreateDailyRecords < ActiveRecord::Migration
       t.integer :moon_phase_id
       t.integer :moon_percent
       t.text :weather
-      t.integer :precipitation
+      t.integer :rained
     end
   end
 end

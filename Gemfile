@@ -17,7 +17,8 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'awesome_print'
 # Forms
 gem 'simple_form'
-
+#Icons
+gem 'foundation-icons-sass-rails'
 #enums
 gem 'enum_help'
 

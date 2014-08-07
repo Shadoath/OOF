@@ -1,0 +1,23 @@
+<h1>Editing MULTIPLE locations</h1>
+
+<div class="row">
+  <div class="small-12 columns">
+     <%= simple_form_for :location, :url => '/locations/update_multiple', :html => { :method => :put } do |f| %>
+     <ul>
+        <% for location in @locations %>
+           <li>
+              <%= hidden_field_tag "location_ids[]", location.id %>
+              <%=h location.name %>
+           </li>
+        <% end %>
+     </ul>
+     
+      <%= f.input :soil_id, collection: Soil.all, prompt: "Choose wisely" %>
+      <%= f.input :size, label: "Size (feet)" %><br>
+      <%= f.input :comment, required: false %><br>
+      <%= f.button :submit %>
+    <% end %>
+  </div>
+</div>
+
+<%= link_to 'All Locations', locations_path %>

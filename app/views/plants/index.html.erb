@@ -16,15 +16,15 @@
   <tbody>
     <% @plants.each do |plant| %>
       <tr>
-        <td><%= plant.name %></td>
-        <td><%= plant.plant_type %></td>
-        <td><%= plant.plant_group %></td>
-        <td><%= plant.harvest_type.name if plant.harvest_type %></td>
-        <td><%= plant.water_amount.name if plant.water_amount %></td>
-        <td><%= plant.comment %></td>
-        <td><%= link_to raw('E<i class="fi-pencil"></i>'), edit_plant_path(plant), :title => "Edit this plant" %> |
-            <%= link_to raw('S<i class="fi-eye"></i>'), plant, :title => "View this plant" %> |
-            <%= link_to 'Destroy', plant, method: :delete, data: { confirm: 'Are you sure?' }, class: "button tiny alert" %></td>
+         <td><%= plant.name %></td>
+         <td><%= plant.plant_type %></td>
+         <td><%= plant.plant_group %></td>
+         <td><%= plant.harvest_type.name if plant.harvest_type %></td>
+         <td><%= plant.water_amount.name if plant.water_amount %></td>
+         <td><%= plant.comment %></td>
+         <td><%= link_to raw('<i class="fi-pencil small"></i>'), edit_plant_path(plant)%> |
+            <%= link_to raw('<i class="fi-eye medium"></i>'), plant, :title => "View this plant" %> |
+            <%= link_to raw('<i class="fi-trash large"></i>'), plant_path(plant), method: :delete, data: { confirm: 'Are you sure you want to remove this plant?' } %>
       </tr>
     <% end %>
   </tbody>
@@ -32,13 +32,13 @@
 
 <br>
 <div class="row">
-   <div class="small-4 columns">
-      <%= link_to 'New Plant', new_plant_path %>
+      <div class="small-4 columns">
+      <%= link_to 'Home', '/' %>
    </div>
    <div class="small-4 columns">
-      <%= link_to 'Edit selected', '#TODO' %>
+      
    </div>
    <div class="small-4 columns">
-      <%= link_to 'New Plant', new_plant_path %>
+      <p class="text-right"><%= link_to 'New Plant', new_plant_path %></p>
    </div>
 </div>

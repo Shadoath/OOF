@@ -61,10 +61,27 @@ class LocationsController < ApplicationController
       format.json { head :no_content }
     end
   end
+   
+   # POST /locations
+   def edit_multiple
+     @locations = Location.find(params[:location_ids])
+   end
+   
+   # Put /locations
+   def update_multiple
+     puts "$$$$.$$ params=#{params.inspect}"
+     @locations = Location.find(params[:location_ids])
+     @locations.each do |location|
+       location.update_attributes!(location_params.reject { |k,v| v.blank? })
+     end
+     flash[:notice] = "Updated locations!"
+     redirect_to locations_path
+   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_location
+       puts "$$$$.$$ params=#{params.inspect}"
       @location = Location.find(params[:id])
     end
 

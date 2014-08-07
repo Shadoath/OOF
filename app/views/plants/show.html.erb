@@ -33,6 +33,16 @@
       </p>
    </div>
 </div>
-
-<%= link_to 'Edit', edit_plant_path(@plant) %> |
-<%= link_to 'All Plants', plants_path %>
+<div class="row">
+   <div class="small-12 columns">
+      <div class="small-4 columns">
+         <%= link_to 'All Plants', plants_path %>
+      </div>
+      <div class="small-4 columns">
+         <%= link_to 'Edit', edit_plant_path(@plant) %>
+      </div>
+      <div class="small-4 columns">
+         <%= link_to 'New Plant', new_plant_path %>
+      </div>
+   </div>
+</div>

@@ -1,6 +1,12 @@
 <h1>Editing plant</h1>
 
 <%= render 'form' %>
-
-<%= link_to 'Show', @plant %> |
-<%= link_to 'All Plants', plants_path %>
+<div class="small-4 columns">
+      <%= link_to 'All Plants', plants_path %>
+   </div>
+   <div class="small-4 columns">
+      <%= link_to 'Show', @plant %>
+   </div>
+   <div class="small-4 columns">
+      <%= link_to 'New Plant', new_plant_path %>
+   </div>

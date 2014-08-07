@@ -1,31 +1,44 @@
 <h1>Listing locations</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Soil</th>
-      <th>Size (ft)</th>
-      <th>Comment</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @locations.each do |location| %>
-      <tr>
-        <td><%= location.name %></td>
-         <td><%= location.soil.name %></td>
-        <td><%= location.size %></td>
-        <td><%= location.comment %></td>
-        <td><%= link_to 'Show', location %></td>
-        <td><%= link_to 'Edit', edit_location_path(location) %></td>
-        <td><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= form_tag '/locations/edit_multiple' do %>
+<%= submit_tag "Edit Checked" %>
+   <table>
+     <thead>
+       <tr>
+         <th></th>
+         <th>Name</th>
+         <th>Soil</th>
+         <th>Size (ft)</th>
+         <th>Comment</th>
+         <th colspan="3"></th>
+       </tr>
+     </thead>
 
+     <tbody>
+       <% @locations.each do |location| %>
+         <tr>
+            <td><%= check_box_tag "location_ids[]", location.id %></td>
+            <td><%= location.name %></td>
+            <td><%= location.soil.name %></td>
+            <td><%= location.size %></td>
+            <td><%= location.comment %></td>
+            <td><%= link_to 'Show', location %></td>
+            <td><%= link_to 'Edit', edit_location_path(location) %></td>
+            <td><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+         </tr>
+       <% end %>
+     </tbody>
+   </table>
+   <%= submit_tag "Edit Checked" %>
+<% end %>
 <br>
-
-<%= link_to 'New Location', new_location_path %>
+   <div class="small-4 columns">
+      <%= link_to 'Home', '/' %>
+   </div>
+   <div class="small-4 columns">
+      
+   </div>
+   <div class="small-4 columns">
+      <p class="text-right"><%= link_to 'New Location', new_location_path %></p>
+   </div>

@@ -3,8 +3,8 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
-# Use postgresql as the database
-gem 'pg'
+# Use sqlite3 as the database
+gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -16,6 +16,9 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # Forms
 gem 'simple_form'
+
+#enums
+gem 'enum_help'
 
 #file Uploads
 gem 'paperclip'
@@ -48,4 +51,9 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 #development
-gem 'unicorn'
+group :development, :test do
+   gem 'cucumber-rails', require: false
+   gem 'database_cleaner'
+   gem 'capybara'
+   gem 'capybara-rails'
+end

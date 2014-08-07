@@ -20,8 +20,8 @@
          <td><%= planting.location.name if planting.location %></td>
         <td><%= planting.count_planted %></td>
         <td><%= planting.date_planted %></td>
-        <td><%= link_to 'Show', planting %></td>
-        <td><%= link_to 'Edit', edit_planting_path(planting) %></td>
+        <td><%= link_to raw('E<i class="fi-pencil"></i>'), edit_planting_path(planting), :title => "Edit this channel" %> |
+            <%= link_to raw('S<i class="fi-eye"></i>'), planting, :title => "View this channel" %></td>
         <td><%= link_to 'Destroy', planting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

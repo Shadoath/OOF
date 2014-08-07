@@ -1,6 +1,16 @@
 <h4 align="center">Updating Active Plant</h4>
 
 <%= render 'form_update' %>
+<div class="row column-12">
+   <div class="column-4">
+      <%= link_to 'All Active Plants', active_plants_path %>
 
-<%= link_to 'Show', @active_plant %> |
-<%= link_to 'All Active Plants', active_plants_path %>
+   </div>
+   <div class="column-4">
+       <%= link_to 'Show', @active_plant %> |
+
+   </div>
+   <div class="column-4">
+      <%= link_to 'New', new_active_plant_path %> |
+
+   </div>

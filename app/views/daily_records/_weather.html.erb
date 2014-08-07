@@ -1,0 +1,21 @@
+<% require 'json' 
+require "awesome_print"
+%>
+<div class="row">
+   <div>
+      <% if !@parsed_weather.nil? %>
+         The current temp is <%= @parsed_weather['current_observation']['temp_f']  %> 
+         Relative humidity:  <%= @parsed_weather['current_observation']['relative_humidity'].to_s %><br>
+         All options{<%= puts ap @parsed_weather %>}<br>
+      <% end %>
+   </div>
+   <div>
+      <% if !@last_wunder_query.nil? %>
+         last update <%= puts @last_wunder_query.strftime("%m-%d %H:%M:%S") %>
+      <% end %>
+   </div>
+   <div>
+      <%= link_to 'Weather API', 'http://www.wunderground.com/?apiref=313cd5e9f1c15aff' %>
+   </div>
+
+</div>

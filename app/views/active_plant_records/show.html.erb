@@ -1,0 +1,35 @@
+<div class="row">
+   <p id="notice"><%= notice %></p>
+   <div class="small-12 columns">
+      <%= @active_plant_record.active_plant.plant.name %>
+   </div>
+      <div class="small-12 columns">
+      <%= @active_plant_record.active_plant.location.name %>
+   </div>
+   <div class="small-12 columns">
+      Date: <%= @active_plant_record.date_processed %>
+   </div>
+   <div class="small-12 columns">
+      Status: <%= @active_plant_record.plant_status.name %>
+   </div>
+   <div class="small-12 columns">
+      Count Active: <%= @active_plant_record.count_active %>
+   </div>
+   <div class="small-12 columns">
+      Nutrients: <%= @active_plant_record.nutrients_added %>
+   </div>   
+   <div class="small-12 columns">
+      Comment: <%= @active_plant_record.comment %>
+   </div>
+</div>
+<div class="row">
+   <div class="small-4 columns">
+      <%= link_to 'All AP Records', active_plant_records_path %>
+   </div>
+   <div class="small-4 columns">
+      <p class="text-center"><%= link_to 'Edit', edit_active_plant_record_path(@active_plant_record) %> </p>
+   </div>
+   <div class="small-4 columns">
+   </div>
+</div>
+      

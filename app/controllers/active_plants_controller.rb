@@ -48,10 +48,6 @@ class ActivePlantsController < ApplicationController
   # PATCH/PUT /active_plants/1.json
   def update
      action_date = Date.civil(params[:range][:"start_date(1i)"].to_i,params[:range][:"start_date(2i)"].to_i,params[:range][:"start_date(3i)"].to_i)
-      if(params[:active_plant][:watered] == "1")
-          puts "$$$$.$$ was watered :)"
-          params[:active_plant][:last_watering_date] = action_date
-       end
        if(params[:active_plant][:nutrients_added] == "1")
           puts "$$$$.$$ got nutrients :)"
           params[:active_plant][:last_nutrient_date] = action_date
@@ -60,6 +56,8 @@ class ActivePlantsController < ApplicationController
 
      respond_to do |format|             
      if @active_plant.update(active_plant_params)
+        @planting = ActivePlantRecord.create(active_plant_id: @active_plant.id, plant_status_id: active_plant_params[:plant_status_id], count_active: active_plant_params[:count_active], date_processed: action_date, nutrients_added: params[:active_plant][:nutrients_added], comment: @active_plant.comment)
+
         #TODO update harvest data if needed.
         format.html { redirect_to @active_plant, notice: 'Active plant was successfully updated.' }
         format.json { render :show, status: :ok, location: @active_plant }

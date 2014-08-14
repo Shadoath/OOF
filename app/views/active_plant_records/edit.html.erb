@@ -1,14 +1,13 @@
-<h1>New Active Plant</h1>
-<h2>Creates planting data.</h2>
+<h1>Editing AP Record</h1>
 
 <%= render 'form' %>
 
-
 <div class="row">
    <div class="small-4 columns">
-      <%= link_to 'All Active Plants', active_plants_path %>
+      <%= link_to 'All AP Records', active_plant_records_path %>
    </div>
    <div class="small-4 columns">
+      <p class="text-center"><%= link_to 'Show', @active_plant_record %> </p>
    </div>
    <div class="small-4 columns">
    </div>

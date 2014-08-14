@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="small-12 columns">
+     <%= simple_form_for(@active_plant_record) do |f| %>
+      <% if @active_plant_record.errors.any? %>
+        <div class="div.alert-box.alert.round" id="error_explanation">
+          <h2><%= pluralize(@active_plant_record.errors.count, "error") %> prohibited this Harvestfrom being saved:</h2>
+          <ul>
+      <% @active_plant_record.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+        </div>
+      <% end %>
+     <td> <%= "#{@active_plant_record.active_plant.plant.name} #{@active_plant_record.active_plant.location.name}" %> 
+     <%= f.input :date_processed %>
+     <%= f.input :count_active %>
+     <%= f.input :plant_status_id, collection: PlantStatus.all, prompt: "Choose wisely" %>
+     <%= f.input :nutrients_added %>
+     <%= f.input :comment %>
+     <%= f.button :submit %>
+
+   <% end %>
+   </div>
+</div>

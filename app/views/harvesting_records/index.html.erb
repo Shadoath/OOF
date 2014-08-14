@@ -31,7 +31,16 @@
       </table>
 
       <br>
-
-      <%= link_to 'New Harvesting record', new_harvesting_record_path %>
+      <div class="row">
+         <div class="small-4 columns">
+            <%= link_to 'Home', '/' %>
+         </div>
+         <div class="small-4 columns">
+            <p class="text-center"><%= link_to 'Show', @harvesting_record %> </p>
+         </div>
+         <div class="small-4 columns">
+            <p class="text-right"><%= link_to 'New Harvesting Record', new_harvesting_record_path %></p>
+         </div>
+     </div>
    </div>
 </div>

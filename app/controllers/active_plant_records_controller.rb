@@ -14,7 +14,7 @@ class ActivePlantRecordsController < ApplicationController
 
   # GET /active_plant_records/new
   def new
-     puts "AP params =  #{params}"+ params.to_s
+     puts "AP record params =  #{params}"+ params.to_s
     @selectedActivePlantID = params[:format]
     @active_plant_record = ActivePlantRecord.new
   end

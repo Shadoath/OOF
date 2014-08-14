@@ -17,7 +17,7 @@
           <% @active_plants.each do |active_plant| %>
             <tr>
                <% if active_plant.plant_id? %>
-               <td><%= link_to active_plant.plant.name, plant_path(active_plant.plant) %></td>
+               <td><%= link_to "#{active_plant.plant.name} #{active_plant.plant.plant_type}", plant_path(active_plant.plant) %></td>
                <td><%= active_plant.plant_status.name if active_plant.plant_status_id %></td>
                <td><%= link_to active_plant.location.name, location_path(active_plant.location) %></td>
                <td><%= link_to active_plant.plant.harvest_type.name, harvest_type_path(active_plant.plant.harvest_type) %></td>
@@ -35,8 +35,17 @@
       </table>
 
       <br>
-
-      <%= link_to 'New Active plant', new_active_plant_path %>
+   <div class="row">
+      <div class="small-4 columns">
+         <%= link_to 'Plants', plants_path %>
+      </div>
+      <div class="small-4 columns">
+         <p class="text-center"><%= link_to 'Locations', locations_path %> </p>
+      </div>
+      <div class="small-4 columns">
+         <p class="text-right"><%= link_to 'New Active Plant', new_active_plant_path %></p>
+      </div>
+   </div>
      
    </div>
 </div>

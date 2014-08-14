@@ -11,9 +11,9 @@
       </ul>
         </div>
       <% end %>
-     <%= f.input :plant_id, collection: Plant.order('plant_type ASC, name ASC').all, prompt: "Choose wisely" %>
+      <%= f.input :plant_id, collection: Plant.order('name ASC').all, prompt: "Choose wisely" %>
       <td> Location </td>
-      <%= f.collection_select :location_id, Location.order('name ASC').all, :id, :name,   prompt: "Choose wisely", label: "Location" %>
+      <%= f.collection_select :location_id, Location.all, :id, :name,   prompt: "Choose wisely", label: "Location" %>
       <%= f.input :plant_status_id, collection: PlantStatus.all, prompt: "Choose wisely" %>
       <%= f.input :count_active %><br>
       <td> Date Planted </td>

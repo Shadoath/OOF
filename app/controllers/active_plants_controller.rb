@@ -101,3 +101,4 @@ class ActivePlantsController < ApplicationController
        params.require(:active_plant).permit(:plant_id, :plant_status_id, :location_id, :soil_id, :count_active, :nutrients_added, :comment)
     end
 end
+

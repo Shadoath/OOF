@@ -1,11 +1,15 @@
 class ActivePlantsController < ApplicationController
-  before_action :set_active_plant, only: [:show, :edit, :update, :destroy]
+   before_action :set_active_plant, only: [:show, :edit, :update, :destroy]
    require 'date'
    
   # GET /active_plants
   # GET /active_plants.json
   def index
-     @active_plants = ActivePlant.order(:location_id, :plant_id)
+     if(!params[:sort].nil?)
+        @active_plants = ActivePlant.order(params[:sort] + ' ' + params[:direction]).all
+     else
+        @active_plants = ActivePlant.order(:location_id, :plant_id).all
+     end
   end
 
   # GET /active_plants/1
@@ -20,6 +24,10 @@ class ActivePlantsController < ApplicationController
 
   # GET /active_plants/1/edit
   def edit
+  end
+   
+     # GET /active_plants/1/edit
+  def admin_edit
   end
 
   # POST /active_plants
@@ -80,6 +88,10 @@ class ActivePlantsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def sort_column  
+       ActivePlant.column_names.include?(params[:sort]) ? params[:sort] : "location_id"    
+    end
+   
     def set_active_plant
       @active_plant = ActivePlant.find(params[:id])
     end

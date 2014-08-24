@@ -3,11 +3,11 @@
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Type</th>
-      <th>Group</th>
-      <th>Harvest type</th>
-      <th>Water amount</th>
+      <th><%= sortable "Name" %></th>
+      <th><%= sortable "Type", "plant_type" %></th>
+      <th><%= sortable "Group",  "plant_group" %></th>
+       <th><%= sortable "Harvest type",  "harvest_type_id" %></th>
+       <th><%= sortable "Water amount",  "water_amount_id" %></th>
       <th>Comment</th>
       <th colspan="2"></th>
     </tr>

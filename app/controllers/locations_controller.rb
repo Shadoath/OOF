@@ -4,7 +4,11 @@ class LocationsController < ApplicationController
   # GET /locations
   # GET /locations.json
   def index
-    @locations = Location.all
+     if(!params[:sort].nil?)
+        @locations = Location.order(params[:sort] + ' ' + params[:direction]).all
+     else
+        @locations = Location.all
+     end
   end
 
   # GET /locations/1
@@ -79,6 +83,10 @@ class LocationsController < ApplicationController
    end
 
   private
+   
+   def sort_column  
+       Location.column_names.include?(params[:sort]) ? params[:sort] : "name"    
+    end  
     # Use callbacks to share common setup or constraints between actions.
     def set_location
        puts "$$$$.$$ params=#{params.inspect}"

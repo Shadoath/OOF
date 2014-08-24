@@ -3,11 +3,12 @@
 <table>
   <thead>
     <tr>
-      <th>Active plant</th>
-      <th>Status</th>
-      <th>Location</th>
-      <th>Count planted</th>
-      <th>Date planted</th>
+      <th><%= sortable "Active plant", "active_plant_id" %></th>
+      <th><%= sortable "Status", "plant_status_id" %></th>
+      <th><%= sortable "Location", "location_id" %></th>
+      <th><%= sortable "Count planted", "count_planted" %></th>
+      <th><%= sortable "Date Planted", "date_planted" %></th>
+      <th><%= sortable "Active plant", "active_plant_id" %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,7 +16,7 @@
   <tbody>
     <% @plantings.each do |planting| %>
       <tr>
-         <td><%= planting.active_plant.plant.name if planting.active_plant%></td>
+         <td><%= "#{planting.active_plant.plant.name}, #{planting.active_plant.plant.plant_type}" if planting.active_plant%></td>
          <td><%= planting.plant_status.name if planting.plant_status %></td>
          <td><%= planting.location.name if planting.location %></td>
         <td><%= planting.count_planted %></td>

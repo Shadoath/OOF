@@ -1,10 +1,15 @@
 class PlantsController < ApplicationController
+  helper_method :sort_column, :sort_direction
   before_action :set_plant, only: [:show, :edit, :update, :destroy]
 
   # GET /plants
   # GET /plants.json
   def index
-     @plants = Plant.order('plant_type ASC, name ASC').all
+     if(!params[:sort].nil?)
+        @plants = Plant.order(params[:sort] + ' ' + params[:direction]).all
+     else
+        @plants = Plant.order(:name).all
+     end
   end
 
   # GET /plants/1
@@ -61,7 +66,12 @@ class PlantsController < ApplicationController
     end
   end
 
-  private
+  private  
+    def sort_column  
+       Plant.column_names.include?(params[:sort]) ? params[:sort] : "name"    
+    end  
+ 
+    
     # Use callbacks to share common setup or constraints between actions.
     def set_plant
       @plant = Plant.find(params[:id])

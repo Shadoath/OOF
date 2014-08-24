@@ -4,12 +4,12 @@
       <table>
         <thead>
           <tr>
-            <th>Plant</th>
-            <th>Status</th>
-            <th>Location</th>
-            <th>Harvest Type</th>
-            <th>Count active</th>
-            <th>Comment</th>
+             <th><%= sortable "Plant", "plant_id" %></th>
+             <th><%= sortable "Status", "plant_status_id" %></th>
+             <th><%= sortable "Location", "location_id" %></th>
+             <th>Harvest Type</th>
+             <th><%= sortable "Count active", "count_active" %></th>
+             <th><%= sortable "Comment", "comment" %></th>
             <th colspan="1"></th>
           </tr>
         </thead>

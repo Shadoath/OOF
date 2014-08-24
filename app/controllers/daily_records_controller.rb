@@ -5,7 +5,11 @@ class DailyRecordsController < ApplicationController
   # GET /daily_data
   # GET /daily_data.json
   def index
-    @daily_records = DailyRecord.all
+     if(!params[:sort].nil?)
+        @daily_records = DailyRecord.order(params[:sort] + ' ' + params[:direction]).all
+     else
+        @daily_records = DailyRecord.all
+     end
      if($last_parse_time.nil?)
         $last_parse_time = Time.now
      end

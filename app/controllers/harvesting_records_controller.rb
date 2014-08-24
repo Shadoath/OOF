@@ -4,6 +4,11 @@ class HarvestingRecordsController < ApplicationController
   # GET /harvesting_records
   # GET /harvesting_records.json
   def index
+     if(!params[:sort].nil?)
+        @harvesting_records = HarvestingRecord.order(params[:sort] + ' ' + params[:direction]).all
+     else
+        @harvesting_records = HarvestingRecord.order(:date_harvested).all
+     end
     @harvesting_records = HarvestingRecord.all
   end
 

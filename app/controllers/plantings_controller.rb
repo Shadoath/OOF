@@ -1,10 +1,15 @@
 class PlantingsController < ApplicationController
+  helper_method :sort_column, :sort_direction
   before_action :set_planting, only: [:show, :edit, :update, :destroy]
 
   # GET /plantings
   # GET /plantings.json
   def index
-    @plantings = Planting.all
+     if(!params[:sort].nil?)
+        @plantings = Planting.order(params[:sort] + ' ' + params[:direction]).all
+     else
+        @plantings = Planting.all
+     end
   end
 
   # GET /plantings/1
@@ -63,6 +68,12 @@ class PlantingsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+   
+   private  
+    def sort_column  
+       Planting.column_names.include?(params[:sort]) ? params[:sort] : "date_planted"    
+    end
+   
     def set_planting
       @planting = Planting.find(params[:id])
     end

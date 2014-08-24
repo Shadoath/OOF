@@ -4,7 +4,11 @@ class ActivePlantRecordsController < ApplicationController
   # GET /active_plant_records
   # GET /active_plant_records.json
   def index
-    @active_plant_records = ActivePlantRecord.all
+     if(!params[:sort].nil?)
+        @active_plant_records = ActivePlantRecord.order(params[:sort] + ' ' + params[:direction]).all
+     else
+        @active_plant_records = ActivePlantRecord.order(:date_processed).all
+     end
   end
 
   # GET /active_plant_records/1
@@ -66,6 +70,11 @@ class ActivePlantRecordsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+   
+    def sort_column  
+       ActivePlantRecord.column_names.include?(params[:sort]) ? params[:sort] : "date_processed"    
+    end
+
     def set_active_plant_record
       @active_plant_record = ActivePlantRecord.find(params[:id])
     end

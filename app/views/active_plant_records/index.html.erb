@@ -5,29 +5,25 @@
       <table>
         <thead>
           <tr>
-             <td>Plant</td>
-             <td>Location</td>
-             <td>Date</td>
-             <td>Status</td>
-             <td>Count Active</td>
-             <td>Nutrients Added</td>
-             <td>Comment</td>
-             <td> </td>
+             <th><%= sortable "Plant", "active_plant_id" %></th>
+             <th><%= sortable "Date", "date_processed" %></th>
+             <th><%= sortable "Status", "plant_status_id" %></th>
+             <th><%= sortable "Count Active", "count_active" %></th>
+             <th><%= sortable "Nutrients Added", "nutrients_added" %></th>
+             <th><%= sortable "Comment", "comment" %></th>
+             <th> </th>
           </tr>
         </thead>
-
         <tbody>
            <% @active_plant_records.each do |ap_records| %>
             <tr>
                <% if ap_records.active_plant %>
-                  <td><%= ap_records.active_plant.plant.name %></td>
-                  <td><%= ap_records.active_plant.location.name %></td>
+                  <td><%= "#{ap_records.active_plant.plant.name}, #{ap_records.active_plant.plant.plant_type}" if ap_records.active_plant %></td>
                   <td><%= ap_records.date_processed %></td>
                   <td><%= ap_records.plant_status.name %></td>
                   <td><%= ap_records.count_active %></td>
                   <td><%= ap_records.nutrients_added %></td>
                   <td><%= ap_records.comment %></td>
-
                  <td><%= link_to 'Show', ap_records %> | <%= link_to 'Edit', edit_active_plant_record_path(ap_records) %> | <%= link_to 'Destroy', ap_records, method: :delete, data: { confirm: 'Are you sure?' } %></td>
               <% end %>
             </tr>

@@ -23,6 +23,5 @@
 #Log files
 /log/development.log
 
-#DB changes
-config/database.yml
+
 

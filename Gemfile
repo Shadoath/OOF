@@ -58,5 +58,5 @@ group :development, :test do
    gem 'cucumber-rails', require: false
    gem 'database_cleaner'
    gem 'capybara'
-   gem 'capybara-rails'
+   #gem 'capybara-rails'
 end

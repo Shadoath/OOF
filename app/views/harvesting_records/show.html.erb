@@ -1,16 +1,17 @@
 <div class="row">
    <p id="notice"><%= notice %></p>
+      <div class="small-12 columns">
+      <%= @harvesting_record.date_harvested %>
+   </div>
    <div class="small-12 columns">
-      <%= @harvesting_record.active_plant.plant.name %>
+      <%= "#{@harvesting_record.active_plant.plant.name} #{@harvesting_record.active_plant.plant.plant_type} (AP_id: #{@harvesting_record.active_plant_id})"%>
    </div>
       <div class="small-12 columns">
       <%= @harvesting_record.active_plant.location.name %>
    </div>
+
    <div class="small-12 columns">
-      <%= @harvesting_record.date_harvested %>
-   </div>
-   <div class="small-12 columns">
-      <%= @harvesting_record.count_harvested %>
+      <%= @harvesting_record.count_harvested %> <%= @harvesting_record.weight_type.name %>
    </div>
 
 </div>
@@ -25,4 +26,6 @@
          <p class="text-right"><%= link_to 'New Harvesting Record', new_harvesting_record_path %></p>
       </div>
    </div>
+<h3 align="center">Linked Harvests</h3>
+<%= render 'past_harvests' %>
       

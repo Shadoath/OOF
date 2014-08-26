@@ -2,20 +2,21 @@
 require "awesome_print"
 %>
 <div class="row">
+   <%= "Current weather for: #{@location}" %><br>
    <div>
-      <% if !@parsed_weather.nil? %>
-         The current temp is <%= @parsed_weather['current_observation']['temp_f']  %> 
-         Relative humidity:  <%= @parsed_weather['current_observation']['relative_humidity'].to_s %><br>
-         All options{<%= puts ap @parsed_weather %>}<br>
+      <% if !@parsed_weather_json.nil? %>
+         The temp is <%= @parsed_weather_json['current_observation']['temp_f']  %> <br>
+         Relative humidity:  <%= @parsed_weather_json['current_observation']['relative_humidity'].to_s %><br>
+         All options{<%= raw( "#{ap @parsed_weather_json.to_s}") %>}<br>
       <% end %>
    </div>
    <div>
-      <% if !@last_wunder_query.nil? %>
-         last update <%= puts @last_wunder_query.strftime("%m-%d %H:%M:%S") %>
+      <% if !$last_parse_time.nil? %>
+      last update: <%=  "#{$last_parse_time.strftime("%m-%d %H:%M:%S")}" %><br>
       <% end %>
    </div>
    <div>
-      <%= link_to 'Weather API', 'http://www.wunderground.com/?apiref=313cd5e9f1c15aff' %>
+      <%= link_to 'Weather API', 'http://www.wunderground.com/?apiref=313cd5e9f1c15aff' %><br>
    </div>
-
+   Yesterday = <%=  raw("#{@yesterday.to_s}") %>
 </div>

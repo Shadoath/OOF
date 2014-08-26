@@ -7,4 +7,8 @@ class ApplicationController < ActionController::Base
    def sort_direction  
         %w[asc desc].include?(params[:direction]) ?  params[:direction] : "asc"
     end 
+   
+   def w_api
+      @w_api ||= Wunderground.new("ef532dcfb1826593")
+   end
 end

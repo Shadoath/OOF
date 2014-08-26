@@ -21,6 +21,9 @@
          </div>
       </div>
       <div class="small-12 columns">
+         <%= f.input :location_id, collection: Location.all, label: "Change Location..." %>
+      </div>
+      <div class="small-12 columns">
          <%= f.input :plant_status_id, collection: PlantStatus.all, label: "Change Status..." %>
       </div>
       <div class="small-12 columns">

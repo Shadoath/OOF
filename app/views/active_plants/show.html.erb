@@ -1,3 +1,5 @@
+<p class="text-left"><%= link_to 'New', new_active_plant_path %></p>
+
 <div class="row">
    <div class="small-12 columns">
       <p id="notice"><%= notice %></p>
@@ -30,6 +32,6 @@
       <p class="text-center"><%= link_to 'Edit', edit_active_plant_path(@active_plant) %> </p>
    </div>
    <div class="small-4 columns">
-      <p class="text-right"><%= link_to 'New Active Plant', new_active_plant_path %></p>
+      <p class="text-right"><%= link_to 'Harvest', new_harvesting_record_path(@active_plant), :active_plant_id => @active_plant.id %></p>
    </div>
 </div>

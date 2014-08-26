@@ -1,0 +1,46 @@
+<table align="center">
+   <thead>
+      <tr>
+         <th>Date</th>
+         <th>Harvested</th>
+         <th> </th>
+      </tr>
+   </thead>
+
+   <tbody>
+      <% total_ounces = 0 %>
+      <% total_pounds = 0 %>
+      <% total_count = 0 %>
+      <% @harvesting_records.each do |harvesting_record| %>
+         <% if harvesting_record.weight_type.name.to_s == "Ounces" 
+            total_ounces += harvesting_record.count_harvested 
+         elsif harvesting_record.weight_type.name.to_s == "Pounds"
+            total_pounds += harvesting_record.count_harvested 
+         elsif harvesting_record.weight_type.name.to_s == "Count"
+            total_count += harvesting_record.count_harvested 
+         end %>
+         <tr>
+            <% if harvesting_record.active_plant && harvesting_record.id != @harvesting_record.id %>
+            <td><%= harvesting_record.date_harvested %></td>
+            <td><%= harvesting_record.count_harvested %> <%= harvesting_record.weight_type.name %></td>
+            <td><%= link_to raw('<i class="fi-eye"></i>'), harvesting_record %> | <%= link_to raw('<i class="fi-pencil"></i>'), edit_harvesting_record_path(harvesting_record) %> | <%= link_to raw('<i class="fi-trash"></i>'), harvesting_record, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+         <% end %>
+      </tr>
+      <% end %>
+      <tr>
+         <td></td>
+         <th>Total Count</th>
+         <td><%= total_count %> </td>
+      </tr>
+      <tr>
+         <td></td>
+         <th>Total Ounces</th>
+         <td><%= total_ounces %> </td>
+      </tr>
+      <tr>
+         <td></td>
+         <th>Total Pounds</th>
+         <td><%= total_pounds %> </td>
+      </tr>
+   </tbody>
+</table>

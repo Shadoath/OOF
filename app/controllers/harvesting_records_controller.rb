@@ -5,16 +5,23 @@ class HarvestingRecordsController < ApplicationController
   # GET /harvesting_records.json
   def index
      if(!params[:sort].nil?)
-        @harvesting_records = HarvestingRecord.order(params[:sort] + ' ' + params[:direction]).all
+        if params[:sort] == "location_id" || params[:sort] == "plant_id"
+           @harvesting_records = HarvestingRecord.joins(:active_plant).order(params[:sort] + ' ' + params[:direction]).all
+        else
+           @harvesting_records = HarvestingRecord.order(params[:sort] + ' ' + params[:direction]).all
+        end
      else
         @harvesting_records = HarvestingRecord.order(:date_harvested).all
      end
-    @harvesting_records = HarvestingRecord.all
   end
 
   # GET /harvesting_records/1
   # GET /harvesting_records/1.json
   def show
+     puts "$$$$.$$ #{params.inspect}"
+     @harvesting_records = HarvestingRecord.where(active_plant_id: @harvesting_record.active_plant_id).order(:date_harvested).all
+#      @harvesting_records = HarvestingRecord.where(order(:date_harvested).all
+
   end
 
   # GET /harvesting_records/new
@@ -77,6 +84,10 @@ class HarvestingRecordsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+   def sort_column     
+      HarvestingRecord.column_names.include?(params[:sort]) ? params[:sort] : "date_harvested"    
+    end
+   
     def set_harvesting_record
       @harvesting_record = HarvestingRecord.find(params[:id])
     end

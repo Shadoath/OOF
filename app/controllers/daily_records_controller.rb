@@ -13,14 +13,18 @@ class DailyRecordsController < ApplicationController
      if($last_parse_time.nil?)
         $last_parse_time = Time.now
      end
-     if( $last_parse_time < (Time.now + 60*5))
-        open('http://api.wunderground.com/api/ef532dcfb1826593/geolookup/conditions/q/IA/Cedar_Rapids.json') do |f|
+     @cur_time = Time.now + 5.minutes
+     puts "$cur_time = #{@cur_time.to_s}"
+     puts "$last_parse_time = #{$last_parse_time.to_s}"
+     if( $last_parse_time < @cur_time)
+        open('http://api.wunderground.com/api/ef532dcfb1826593/geolookup/conditions/q/CO/Durango.json') do |f|
            @json_string = f.read 
-           @parsed_json = JSON.parse(@json_string) 
-           location = @parsed_json['location']['city'] 
-           temp_f = @parsed_json['current_observation']['temp_f'] 
-           puts "Current temperature in #{location} is: #{temp_f}\n" 
+           @parsed_weather_json = JSON.parse(@json_string) 
+           @location = @parsed_weather_json['location']['city'] 
+           @temp_f = @parsed_weather_json['current_observation']['temp_f'] 
+           puts "Current temperature in #{@location} is: #{@temp_f}\n" 
            $last_parse_time = Time.now
+           @yesterday = w_api.history_for(1.day.ago,"CO","Durango")
         end
      end
   end

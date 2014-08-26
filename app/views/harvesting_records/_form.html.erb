@@ -13,9 +13,9 @@
         </div>
       <% end %>
      <% if @selectedActivePlantID %>
-        <%= f.input :active_plant_id, collection: ActivePlant.all, selected: @selectedActivePlantID, label_method: lambda { |ap| "#{ap.plant.name} | #{ap.location.name}" }, prompt: "Choose wisely" %>
+        <%= f.input :active_plant_id, collection: ActivePlant.includes(:plant).order("plants.plant_type ASC").all, selected: @selectedActivePlantID, label_method: lambda { |ap| "#{ap.plant.plant_type}: #{ap.plant.name} | #{ap.location.name}" }, prompt: "Choose wisely!" %>
      <% else %>
-        <%= f.input :active_plant_id, collection: ActivePlant.all, label_method: lambda { |ap| "#{ap.plant.name} | #{ap.location.name}" }, prompt: "Choose wisely" %>
+        <%= f.input :active_plant_id, collection: ActivePlant.includes(:plant).order("plants.plant_type ASC").all, label_method: lambda { |ap| "#{ap.plant.plant_type}: #{ap.plant.name} | #{ap.location.name}" }, prompt: "Choose wisely" %>
      <% end %>
      <%= f.input :date_harvested %>
      <%= f.input :count_harvested %>

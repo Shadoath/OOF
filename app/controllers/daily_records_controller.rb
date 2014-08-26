@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 class DailyRecordsController < ApplicationController
    before_action :set_daily_records, only: [:show, :edit, :update, :destroy]
      require 'open-uri' 

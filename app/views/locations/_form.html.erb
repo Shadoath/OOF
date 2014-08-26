@@ -12,7 +12,7 @@
         </div>
       <% end %>
       <%= f.input :name, as: :string %>
-      <%= f.input :soil_id, collection: Soil.all, prompt: "Choose wisely" %>
+      <%= f.input :soil_id, collection: Soil.all, prompt: "Choose wisely!" %>
       <%= f.input :size, label: "Size (feet)" %><br>
       <%= f.input :comment %><br>
       <%= f.button :submit %>

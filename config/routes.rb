@@ -20,15 +20,18 @@ Rails.application.routes.draw do
 
   resources :plants
 
-  post 'locations/edit_multiple', :to => 'locations#edit_multiple', :as => 'locations_edit_multiple' 
-  get 'locations/edit_multiple', :to => 'locations#index', :as => 'locations' 
+
+   #GET devise
+   post 'locations/edit_multiple', :to => 'locations#edit_multiple', :as => 'locations_edit_multiple' 
+  #get 'locations/edit_multiple', :to => 'locations#index', :as => 'locations' 
 
   put 'locations/update_multiple', :to =>  'locations#update_multiple', :as => 'locations_update_multiple' 
    
-   #GET devise
-   
   resources :locations
+  
+  #
    
+
 
   resources :water_amounts
 

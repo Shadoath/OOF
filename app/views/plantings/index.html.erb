@@ -1,5 +1,5 @@
 <h1>Listing plantings</h1>
-<%= link_to 'New AP', new_active_plant_path %>
+<%= link_to 'New AP', new_active_plant_path, { :class=>"button small round success" } %>
 
 <table>
   <thead>
@@ -22,13 +22,14 @@
          <td><%= planting.location.name if planting.location %></td>
         <td><%= planting.count_planted %></td>
         <td><%= planting.date_planted %></td>
-        <td><%= link_to raw('E<i class="fi-pencil"></i>'), edit_planting_path(planting), :title => "Edit this channel" %> |
-            <%= link_to raw('S<i class="fi-eye"></i>'), planting, :title => "View this channel" %></td>
-        <td><%= link_to 'Destroy', planting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to raw('<i class="fi-pencil"></i>'), edit_planting_path(planting), :title => "Edit this Planting" %> |
+            <%= link_to raw('<i class="fi-eye"></i>'), planting, :title => "View this planting" %></td>
+        <td><%= link_to raw('<i class="fi-trash"></i>'),, planting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
+<%= link_to 'New AP', new_active_plant_path, { :class=>"button small round success" } %>
 

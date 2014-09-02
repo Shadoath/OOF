@@ -12,9 +12,9 @@
     <% @harvest_types.each do |harvest_type| %>
       <tr>
         <td><%= harvest_type.name %></td>
-        <td><%= link_to 'Show', harvest_type %></td>
-        <td><%= link_to 'Edit', edit_harvest_type_path(harvest_type) %></td>
-        <td><%= link_to 'Destroy', harvest_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+         <td><%= link_to raw('<i class="fi-eye"></i>'), harvest_type %></td>
+        <td><%= link_to raw('<i class="fi-pencil"></i>'), edit_harvest_type_path(harvest_type) %></td>
+        <td><%= link_to raw('<i class="fi-trash"></i>'), harvest_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +22,4 @@
 
 <br>
 
-<%= link_to 'New Harvest type', new_harvest_type_path %>
+<%= link_to 'New Harvest type', new_harvest_type_path, { :class=>"button small round success" } %>

@@ -19,6 +19,7 @@
          <div class="small-6 columns">
             <h5>Current status: <%= @active_plant.plant_status.name %></h5>
          </div>
+         <%= f.input :plant_id, collection: Plant.order('name ASC').all, prompt: "Choose wisely" %>
       </div>
       <div class="small-12 columns">
          <%= f.input :location_id, collection: Location.all, label: "Change Location..." %>

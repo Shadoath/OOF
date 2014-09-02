@@ -1,5 +1,5 @@
 <h1>Listing locations</h1>
-<p class="text-left"><%= link_to 'New Location', new_location_path %></p>
+<p class="text-left"><%= link_to 'New Location', new_location_path, { :class=>"button small round success" } %></p>
 
 
 <%= form_tag '/locations/edit_multiple' do %>
@@ -24,9 +24,9 @@
             <td><%= location.soil.name %></td>
             <td><%= location.size %></td>
             <td><%= location.comment %></td>
-            <td><%= link_to 'Show', location %></td>
-            <td><%= link_to 'Edit', edit_location_path(location) %></td>
-            <td><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to raw('<i class="fi-eye"></i>'), location %></td>
+            <td><%= link_to raw('<i class="fi-pencil"></i>'), edit_location_path(location) %></td>
+            <td><%= link_to raw('<i class="fi-trash"></i>'), location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
          </tr>
        <% end %>
      </tbody>
@@ -34,13 +34,15 @@
    <%= submit_tag "Edit Checked" %>
 <% end %>
 <br>
+<p class="text-left"><%= link_to 'New Location', new_location_path, { :class=>"button small round success" } %></p>
+<div class="row">
    <div class="small-4 columns">
-         <%= link_to 'Plants', plants_path %>
+         <b><%= link_to 'Plants', plants_path, { :class=>"button small round" } %></b>
    </div>
    <div class="small-4 columns">
-      <p class="text-center"><%= link_to 'Active Plants', active_plants_path %></p>
+      <b><p class="text-center"><%= link_to 'Active Plants', active_plants_path, { :class=>"button small round" } %></p></b>
    </div>
    <div class="small-4 columns">
-      <p class="text-right"><%= link_to 'Records', active_plant_records_path %></p>
-
+      <b><p class="text-right bold"><%= link_to 'Soils', soils_path, { :class=>"button small round disabled" } %></p></b>
    </div>
+</div>

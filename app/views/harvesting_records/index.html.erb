@@ -4,7 +4,7 @@
            <h1>Listing Harvesting Records</h1>
         </div>
         <div class="small-12 columns">
-           <p class="text-left"><%= link_to 'New Harvesting Record', new_harvesting_record_path %></p>
+           <p class="text-left"><%= link_to 'New Harvesting Record', new_harvesting_record_path, { :class=>"button small round success" } %></p>
         </div>
      <table>
       <thead>
@@ -25,7 +25,7 @@
             <td><%= harvesting_record.active_plant.location.name %></td>
             <td><%= harvesting_record.date_harvested %></td>
             <td><%= harvesting_record.count_harvested %> <%= harvesting_record.weight_type.name %></td>
-            <td><%= link_to 'Show', harvesting_record %> | <%= link_to 'Edit', edit_harvesting_record_path(harvesting_record) %> | <%= link_to 'Destroy', harvesting_record, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to raw('<i class="fi-eye"></i>'), harvesting_record %> | <%= link_to raw('<i class="fi-pencil"></i>'), edit_harvesting_record_path(harvesting_record) %> | <%= link_to raw('<i class="fi-trash"></i>'), harvesting_record, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             <% end %>
 
          </tr>

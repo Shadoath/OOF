@@ -31,9 +31,9 @@
         <td><%= daily_record.moon_percent %></td>
         <td><%= daily_record.weather %></td>
         <td><%= daily_record.precipitation %></td>
-        <td><%= link_to 'Show', daily_record %></td>
-         <td><%= link_to 'Edit', edit_daily_record_path(daily_record) %></td>
-        <td><%= link_to 'Destroy', daily_record, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+         <td><%= link_to raw('<i class="fi-eye"></i>'), daily_record %></td>
+         <td><%= link_to raw('<i class="fi-pencil"></i>'), edit_daily_record_path(daily_record) %></td>
+        <td><%= link_to raw('<i class="fi-trash"></i>'), daily_record, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -45,6 +45,6 @@
 
 
 <br>
-<%= link_to 'New Daily data', new_daily_record_path %>
+<%= link_to 'New Daily data', new_daily_record_path, { :class=>"button small round success" } %>
 
 

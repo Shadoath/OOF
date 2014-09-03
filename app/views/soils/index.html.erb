@@ -4,7 +4,7 @@
      <thead>
        <tr>
          <th>Name</th>
-         <th colspan="3"></th>
+         <th></th>
        </tr>
      </thead>
 
@@ -12,16 +12,17 @@
        <% @soils.each do |soil| %>
          <tr>
            <td><%= soil.name %></td>
-           <td><%= link_to 'Show', soil %></td>
-           <td><%= link_to 'Edit', edit_soil_path(soil) %></td>
-           <td><%= link_to 'Destroy', soil, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td>
+              <%= link_to raw('<i class="fi-eye"></i>'), soil %>
+              <%= link_to raw('<i class="fi-pencil"></i>'), edit_soil_path(soil) %>
+              <%= link_to raw('<i class="fi-trash"></i>'), soil, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </td>
          </tr>
        <% end %>
      </tbody>
    </table>
    <br>
    <div class="small-4 columns">
-      <%= link_to 'Home', '/' %>
    </div>
    <div class="small-4 columns">
       

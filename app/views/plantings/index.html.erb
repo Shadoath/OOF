@@ -23,8 +23,8 @@
         <td><%= planting.count_planted %></td>
         <td><%= planting.date_planted %></td>
         <td><%= link_to raw('<i class="fi-pencil"></i>'), edit_planting_path(planting), :title => "Edit this Planting" %> |
-            <%= link_to raw('<i class="fi-eye"></i>'), planting, :title => "View this planting" %></td>
-        <td><%= link_to raw('<i class="fi-trash"></i>'),, planting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <%= link_to raw('<i class="fi-eye"></i>'), planting, :title => "View this planting" %> | 
+        <%= link_to raw('<i class="fi-trash"></i>'), planting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

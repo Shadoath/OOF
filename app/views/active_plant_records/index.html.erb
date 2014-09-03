@@ -24,7 +24,7 @@
                   <td><%= ap_records.count_active %></td>
                   <td><%= ap_records.nutrients_added %></td>
                   <td><%= ap_records.comment %></td>
-                 <td><%= link_to 'Show', ap_records %> | <%= link_to 'Edit', edit_active_plant_record_path(ap_records) %> | <%= link_to 'Destroy', ap_records, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                 <td><%= link_to raw('<i class="fi-eye"></i>'), ap_records %> | <%= link_to raw('<i class="fi-pencil"></i>'), edit_active_plant_record_path(ap_records) %> | <%= link_to raw('<i class="fi-trash"></i>'), ap_records, method: :delete, data: { confirm: 'Are you sure?' } %></td>
               <% end %>
             </tr>
           <% end %>

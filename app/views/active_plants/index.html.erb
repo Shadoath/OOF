@@ -27,9 +27,9 @@
                <td><%= active_plant.comment %></td>
                <% end %>
                <td>
-                  <%= link_to 'Update', edit_active_plant_path(active_plant) %> | 
-                  <%= link_to 'Harvest', new_harvesting_record_path(active_plant), :active_plant_id => active_plant.id %>
-                  <%= link_to raw('<i class="fi-eye"></i>'), active_plant %>
+                  <%= link_to raw('<i class="fi-eye"></i>'), active_plant %> | 
+                  <%= link_to raw('<i class="fi-pencil"></i>'), edit_active_plant_path(active_plant) %> | 
+                  <%= link_to raw('<i class="fi-plus"></i>'), new_harvesting_record_path(active_plant), :active_plant_id => active_plant.id %> | 
                   <%= link_to raw('<i class="fi-trash"></i>'), active_plant, method: :delete, data: { confirm: 'Are you sure?' } %>
                </td>
             </tr>

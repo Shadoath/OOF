@@ -11,7 +11,7 @@
       </ul>
         </div>
       <% end %>
-      <%= f.input :plant_id, collection: Plant.order('name ASC').all, prompt: "Choose wisely" %>
+      <%= f.input :plant_id, collection: Plant.order('name ASC').all, label_method: lambda { |ap| "#{ap.plant_type}: #{ap.name}" },  prompt: "Choose wisely" %>
       <td> Location </td>
       <%= f.collection_select :location_id, Location.all, :id, :name,   prompt: "Choose wisely", label: "Location" %>
       <%= f.input :plant_status_id, collection: PlantStatus.all, prompt: "Choose wisely" %>

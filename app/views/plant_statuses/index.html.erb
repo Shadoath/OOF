@@ -12,8 +12,8 @@
     <% @plant_statuses.each do |plant_status| %>
       <tr>
         <td><%= plant_status.name %></td>
-         <td><%= link_to raw('<i class="fi-eye"></i>'), plant_status %></td>
-        <td><%= link_toraw('<i class="fi-pencil"></i>'), edit_plant_status_path(plant_status) %></td>
+        <td><%= link_to raw('<i class="fi-eye"></i>'), plant_status %></td>
+        <td><%= link_to raw('<i class="fi-pencil"></i>'), edit_plant_status_path(plant_status) %></td>
         <td><%= link_to raw('<i class="fi-trash"></i>'), plant_status, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

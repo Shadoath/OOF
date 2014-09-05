@@ -15,6 +15,14 @@ class ActivePlantsController < ApplicationController
   # GET /active_plants/1
   # GET /active_plants/1.json
   def show
+     #Inner Join
+     #@active_plant = ActivePlant.joins(:planting)
+     @planting = Planting.where(active_plant_id: @active_plant.id).first
+     
+     puts @planting.inspect
+     
+     #@active_plant = ActivePlant.find(params[:id])
+
   end
 
   # GET /active_plants/new

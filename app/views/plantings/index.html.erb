@@ -7,8 +7,8 @@
       <th><%= sortable "Active plant", "active_plant_id" %></th>
       <th><%= sortable "Status", "plant_status_id" %></th>
       <th><%= sortable "Location", "location_id" %></th>
-      <th><%= sortable "Count planted", "count_planted" %></th>
-      <th><%= sortable "Date Planted", "date_planted" %></th>
+      <th><%= sortable "Count", "count_planted" %></th>
+      <th><%= sortable "Date", "date_planted" %></th>
       <th><%= sortable "Active plant", "active_plant_id" %></th>
       <th colspan="3"></th>
     </tr>
@@ -17,11 +17,13 @@
   <tbody>
     <% @plantings.each do |planting| %>
       <tr>
-         <td><%= "#{planting.active_plant.plant.name}, #{planting.active_plant.plant.plant_type}" if planting.active_plant%></td>
+         <% p_name = "#{planting.active_plant.plant.name}, #{planting.active_plant.plant.plant_type}" %>
+         <td><%= link_to p_name, active_plant_path(planting.active_plant_id)%></td>
          <td><%= planting.plant_status.name if planting.plant_status %></td>
          <td><%= planting.location.name if planting.location %></td>
         <td><%= planting.count_planted %></td>
         <td><%= planting.date_planted %></td>
+         <td><%= planting.active_plant_id %></td>
         <td><%= link_to raw('<i class="fi-pencil"></i>'), edit_planting_path(planting), :title => "Edit this Planting" %> |
             <%= link_to raw('<i class="fi-eye"></i>'), planting, :title => "View this planting" %> | 
         <%= link_to raw('<i class="fi-trash"></i>'), planting, method: :delete, data: { confirm: 'Are you sure?' } %></td>

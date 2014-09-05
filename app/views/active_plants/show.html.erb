@@ -1,4 +1,4 @@
-<p class="text-left"><%= link_to 'New', new_active_plant_path %></p>
+<p class="text-left"><%= link_to 'New', new_active_plant_path, { :class=>"button small round" } %></p>
 
 <div class="row">
    <div class="small-12 columns">
@@ -23,6 +23,13 @@
      <strong>Comment:</strong>
      <%= @active_plant.comment %>
    </div>
+   <br>
+   <div class="small-12 columns">
+      <strong>Planted:</strong>
+     <%= link_to @planting.date_planted, planting_path(@planting) %>
+   </div>
+   
+
    
 <div class="row">
    <div class="small-4 columns">
@@ -32,6 +39,6 @@
       <p class="text-center"><%= link_to 'Edit', edit_active_plant_path(@active_plant) %> </p>
    </div>
    <div class="small-4 columns">
-      <p class="text-right"><%= link_to 'Harvest', new_harvesting_record_path(@active_plant), :active_plant_id => @active_plant.id %></p>
+      <p class="text-right"><%= link_to 'Harvest', new_harvesting_record_path(@active_plant), { :class=>"button small round alert", :active_plant_id => @active_plant.id} %></p>
    </div>
 </div>

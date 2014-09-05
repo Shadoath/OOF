@@ -11,7 +11,7 @@
              <th>Harvest Type</th>
              <th><%= sortable "Count active", "count_active" %></th>
              <th><%= sortable "Comment", "comment" %></th>
-            <th colspan="1"></th>
+            <th colspan="2"></th>
           </tr>
         </thead>
         <tbody>
@@ -22,12 +22,12 @@
                <td><%= active_plant.plant_status.name if active_plant.plant_status_id %></td>
                <td><%= link_to active_plant.location.name, location_path(active_plant.location) %></td>
                <td><%= link_to active_plant.plant.harvest_type.name, harvest_type_path(active_plant.plant.harvest_type) %></td>
-
                <td><%= active_plant.count_active %></td>
                <td><%= active_plant.comment %></td>
                <% end %>
                <td>
                   <%= link_to raw('<i class="fi-eye"></i>'), active_plant %> | 
+                  <%= link_to raw('<i class="fi-calendar"></i>'), planting_path(active_plant) %> | 
                   <%= link_to raw('<i class="fi-pencil"></i>'), edit_active_plant_path(active_plant) %> | 
                   <%= link_to raw('<i class="fi-plus"></i>'), new_harvesting_record_path(active_plant), :active_plant_id => active_plant.id %> | 
                   <%= link_to raw('<i class="fi-trash"></i>'), active_plant, method: :delete, data: { confirm: 'Are you sure?' } %>

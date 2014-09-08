@@ -1,35 +1,39 @@
-<p class="text-left"><%= link_to 'New', new_active_plant_path, { :class=>"button small round" } %></p>
 
 <div class="row">
-   <div class="small-12 columns">
+   <div class="small-6 columns">
+      <h3>Active Plant</h3>
       <p id="notice"><%= notice %></p>
-
-      <strong>Plant:</strong>
-      <%= @active_plant.plant.name %>
+      <table>
+         <tr>
+            <td><strong>Plant:</strong></td>
+            <td><%= @active_plant.plant.name %></td>
+         </tr>
+         <tr>
+            <td><strong>Status:</strong></td>
+            <td><%= @active_plant.plant_status.name if @active_plant.plant_status_id%></td>
+         </tr>
+         <tr>
+            <td><strong>Location:</strong></td>
+            <td><%= @active_plant.location.name %></td>
+         </tr>
+         <tr>
+            <td><strong>Count active:</strong></td>
+            <td><%= @active_plant.count_active %></td>
+         </tr>
+         <tr>
+            <td><strong>Comment:</strong></td>
+            <td><%= @active_plant.comment %></td>
+         </tr>
+         <tr>
+            <td><strong>Planted:</strong></td>
+            <td><%= link_to @planting.date_planted, planting_path(@planting) %></td>
+         </tr>
+      </table>
    </div>
-   <div class="small-12 columns">
-      <strong>Status:</strong>
-      <%= @active_plant.plant_status.name if @active_plant.plant_status_id%>
+   <div class="small-6 columns">
+      <%= render partial: '/harvesting_records/past_harvests', :locals => {:align_direction => 'right', :show_all_harvests => true}  %>
    </div>
-   <div class="small-12 columns">
-      <strong>Location:</strong>
-      <%= @active_plant.location.name %>
-   </div>
-   <div class="small-12 columns">
-     <strong>Count active:</strong>
-     <%= @active_plant.count_active %>
-   </div>
-   <div class="small-12 columns">
-     <strong>Comment:</strong>
-     <%= @active_plant.comment %>
-   </div>
-   <br>
-   <div class="small-12 columns">
-      <strong>Planted:</strong>
-     <%= link_to @planting.date_planted, planting_path(@planting) %>
-   </div>
-   
-
+</div>
    
 <div class="row">
    <div class="small-4 columns">

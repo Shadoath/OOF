@@ -1,22 +1,40 @@
 <div class="row">
-   <div class="small-12 columns">
-      <p id="notice"><%= notice %></p>
-      <p><%= link_to 'New', new_harvesting_record_path, { :class=>"button small round" } %></p>
-   </div>
-   <div class="small-12 columns">
-      <%= @harvesting_record.date_harvested %>
-   </div>
-   <div class="small-12 columns">
-      <%= "#{@harvesting_record.active_plant.plant.name} #{@harvesting_record.active_plant.plant.plant_type} (AP_id: #{@harvesting_record.active_plant_id})"%>
-   </div>
+   <div class="small-6 columns">
+         <h3>Harvesting Record</h3>
+
       <div class="small-12 columns">
-      <%= @harvesting_record.active_plant.location.name %>
+         <p id="notice"><%= notice %></p>
+      </div>
+      <table>
+         <tr>
+            <td><strong>Date:</strong></td>
+            <td><%= @harvesting_record.date_harvested %></td>
+         </tr>
+         <tr>
+            <td><strong>Plant:</strong></td>
+            <td><%= "#{@harvesting_record.active_plant.plant.name} #{@harvesting_record.active_plant.plant.plant_type}"%> </td>
+         </tr>
+         <tr>
+            <td><strong>Location:</strong></td>
+            <td><%= @harvesting_record.active_plant.location.name %></td>
+         </tr>
+         <tr>
+            <td><strong>Count:</strong></td>
+            <td><%= @harvesting_record.count_harvested %> <%= @harvesting_record.weight_type.name %></td>
+         </tr>
+         <tr>
+            <td><strong>Comment:</strong></td>
+            <td><td><%= @harvesting_record.comment %></td>
+         </tr>
+         <tr>
+            <td><strong>Link to:</strong></td>
+            <td><%= link_to "Active Plant", active_plant_path(@harvesting_record.active_plant_id)%></td>
+         </tr>
+      </table>
    </div>
-
-   <div class="small-12 columns">
-      <%= @harvesting_record.count_harvested %> <%= @harvesting_record.weight_type.name %>
+   <div class="small-6 columns">
+      <%= render partial: 'past_harvests', :locals => {:align_direction => 'center', :show_all_harvests => false} %>
    </div>
-
 </div>
    <div class="row">
       <div class="small-4 columns">
@@ -26,8 +44,7 @@
          <p class="text-center"><%= link_to 'Edit', edit_harvesting_record_path(@harvesting_record), { :class=>"button small round alert" } %> </p>
       </div>
       <div class="small-4 columns">
+         <p class="text-right"><%= link_to 'New', new_harvesting_record_path, { :class=>"button small round" } %></p>
       </div>
    </div>
-<h3 align="center">Linked Harvests</h3>
-<%= render 'past_harvests' %>
       

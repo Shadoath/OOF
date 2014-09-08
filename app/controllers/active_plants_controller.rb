@@ -20,7 +20,8 @@ class ActivePlantsController < ApplicationController
      @planting = Planting.where(active_plant_id: @active_plant.id).first
      
      puts @planting.inspect
-     
+     @harvesting_records = HarvestingRecord.where(active_plant_id: @active_plant.id).order(:date_harvested).all
+
      #@active_plant = ActivePlant.find(params[:id])
 
   end

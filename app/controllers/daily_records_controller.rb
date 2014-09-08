@@ -32,21 +32,26 @@ class DailyRecordsController < ApplicationController
   # GET /daily_data/1
   # GET /daily_data/1.json
   def show
+     @last_daily_record = DailyRecord.last
   end
 
   # GET /daily_data/new
   def new
     @daily_record = DailyRecord.new
+    @last_daily_record = DailyRecord.last
   end
 
   # GET /daily_data/1/edit
   def edit
+     @last_daily_record = DailyRecord.last
+
   end
 
   # POST /daily_data
   # POST /daily_data.json
   def create
      @daily_record = DailyRecord.new(daily_record_params)
+     @last_daily_record = DailyRecord.last
 
     respond_to do |format|
       if @daily_record.save

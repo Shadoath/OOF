@@ -1,6 +1,8 @@
 <div class="row">
    <div  class="small-12">
-<% if @daily_record.errors.any? %>
+      <p><%= puts "last daily = #{@last_daily_record.inspect}" %> last</p>
+
+   <% if @daily_record.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@daily_record.errors.count, "error") %> prohibited this daily records from being saved:</h2>
 
@@ -10,60 +12,29 @@
       <% end %>
       </ul>
     </div>
+
   <% end %>
 <%= simple_form_for(@daily_record) do |f| %>
+<div  class="small-6 columns">
+   <%= f.input :daily_date, as: :date %>
+   <%= f.input :temp_high, input_html: { value: '0' } %>
+   <%= f.input :temp_low, input_html: { value: '0' } %>
+   <%= f.input :eggs_collected, input_html: { value: '0' } %>
+   <%= f.input :total_ducks, input_html: { value: @last_daily_record.total_ducks } %>
+   <%= f.input :precipitation, label: "precipitation (inches)", :include_blank => false %>
 
-  <div class="field">
-    <%= f.label :daily_date %><br>
-    <%= f.date_select :daily_date %>
-  </div>
-  <div class="field">
-    <%= f.label :temp_low %><br>
-    <%= f.number_field :temp_low %>
-  </div>
-  <div class="field">
-    <%= f.label :temp_high %><br>
-    <%= f.number_field :temp_high %>
-  </div>
-  <div class="field">
-    <%= f.label :eggs_collected %><br>
-    <%= f.number_field :eggs_collected %>
-  </div>
-  <div class="field">
-    <%= f.label :total_ducks %><br>
-    <%= f.number_field :total_ducks %>
-  </div>
-  <div class="field">
-    <%= f.label :hours_of_daylight %><br>
-    <%= f.time_select :hours_of_daylight %>
-  </div>
-  <div class="field">
-    <%= f.label :sunrise %><br>
-    <%= f.time_select :sunrise %>
-  </div>
-    <%= f.label :moon_phase_id %><br>
-   <%= f.collection_select :moon_phase_id, MoonPhase.all, :id, :name, prompt: "Choose wisely" %>
+</div>
+<div  class="small-6 columns">
+   <%= f.input :hours_of_daylight, input_html: { value: @last_daily_record.hours_of_daylight } %>
+   <%= f.input :sunrise, input_html: { value: @last_daily_record.sunrise } %>
+   <%= f.input :moon_phase_id, collection: MoonPhase.all, :include_blank => false %>
+   <%= f.input :moon_percent, input_html: { value: @last_daily_record.moon_percent } %>
+   <%= f.input :weather %>
+   <%= f.button :submit %>
 
-  <div class="field">
-    <%= f.label :moon_percent %><br>
-    <%= f.number_field :moon_percent %>
-  </div>
-  <div class="field">
-    <%= f.label :weather %><br>
-    <%= f.text_field :weather %>
-  </div>
-  <div class="field">
-    <%= f.label :precipitation %><br>
-     <%= f.input :precipitation, collection: 1..10, include_blank: false %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+      </div>
 <% end %>
       <div class small-12 columns>
       </div>
-      
-      
-      
       </div>
    </div>

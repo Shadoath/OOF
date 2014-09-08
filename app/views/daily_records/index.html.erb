@@ -2,12 +2,12 @@
 <table>
   <thead>
     <tr>
-      <th>Daily date</th>
+      <th>Date</th>
       <th>Temp low</th>
       <th>Temp high</th>
       <th>Eggs collected</th>
       <th>Total ducks</th>
-      <th>Hours of daylight</th>
+      <th>Daylight</th>
       <th>Sunrise</th>
       <th>Moon phase</th>
       <th>Moon percent</th>
@@ -27,7 +27,7 @@
         <td><%= daily_record.total_ducks %></td>
         <td><%= daily_record.hours_of_daylight %></td>
         <td><%= daily_record.sunrise %></td>
-        <td><%= daily_record.moon_phase_id %></td>
+         <td><%= daily_record.moon_phase.name %></td>
         <td><%= daily_record.moon_percent %></td>
         <td><%= daily_record.weather %></td>
         <td><%= daily_record.precipitation %></td>

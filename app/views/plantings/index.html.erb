@@ -17,14 +17,19 @@
   <tbody>
     <% @plantings.each do |planting| %>
       <tr>
-         <% p_name = "#{planting.active_plant.plant.name}, #{planting.active_plant.plant.plant_type}" %>
-         <td><%= link_to p_name, active_plant_path(planting.active_plant_id)%></td>
+         <% if !planting.active_plant.nil? %>
+            <% p_name = "#{planting.active_plant.plant.name}, #{planting.active_plant.plant.plant_type}" %>
+            <td><%= link_to p_name, active_plant_path(planting.active_plant_id)%></td>
+            <td><%= planting.active_plant_id %></td>
+         <% else %>
+            <td>Error</td>
+            <td>Error</td>
+         <% end %>
          <td><%= planting.plant_status.name if planting.plant_status %></td>
          <td><%= planting.location.name if planting.location %></td>
-        <td><%= planting.count_planted %></td>
-        <td><%= planting.date_planted %></td>
-         <td><%= planting.active_plant_id %></td>
-        <td><%= link_to raw('<i class="fi-pencil"></i>'), edit_planting_path(planting), :title => "Edit this Planting" %> |
+         <td><%= planting.count_planted %></td>
+         <td><%= planting.date_planted %></td>
+         <td><%= link_to raw('<i class="fi-pencil"></i>'), edit_planting_path(planting), :title => "Edit this Planting" %> |
             <%= link_to raw('<i class="fi-eye"></i>'), planting, :title => "View this planting" %> | 
         <%= link_to raw('<i class="fi-trash"></i>'), planting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

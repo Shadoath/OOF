@@ -1,33 +1,39 @@
 <div class="row">
-   <h1>Listing soils</h1>
-   <table>
-     <thead>
-       <tr>
-         <th>Name</th>
-         <th></th>
-       </tr>
-     </thead>
+  <div class="small-12 columns">
+      <h1>Listing soils</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th></th>
+          </tr>
+        </thead>
 
-     <tbody>
-       <% @soils.each do |soil| %>
-         <tr>
-           <td><%= soil.name %></td>
-            <td>
-              <%= link_to raw('<i class="fi-eye"></i>'), soil %>
-              <%= link_to raw('<i class="fi-pencil"></i>'), edit_soil_path(soil) %>
-              <%= link_to raw('<i class="fi-trash"></i>'), soil, method: :delete, data: { confirm: 'Are you sure?' } %>
-            </td>
-         </tr>
-       <% end %>
-     </tbody>
-   </table>
-   <br>
-   <div class="small-4 columns">
-   </div>
-   <div class="small-4 columns">
-      
-   </div>
-   <div class="small-4 columns">
-      <p class="text-right"><%= link_to 'New Soil', new_soil_path %></p>
+        <tbody>
+          <% @soils.each do |soil| %>
+            <tr>
+              <td><%= soil.name %></td>
+               <td>
+                 <%= link_to raw('<i class="fi-eye"></i>'), soil %>
+                 <%= link_to raw('<i class="fi-pencil"></i>'), edit_soil_path(soil) %>
+                 <%= link_to raw('<i class="fi-trash"></i>'), soil, method: :delete, data: { confirm: 'Are you sure?' } %>
+               </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <br>
+      <p class="text-left"><%= link_to 'New Soil', new_soil_path, { :class=>"button small round success" } %></p>
+      <div class="row">
+         <div class="small-4 columns">
+            <p class="text-left"><%= link_to 'Plants', plants_path, { :class=>"button small round disabled" } %></p>
+         </div>
+         <div class="small-4 columns">
+            <b><p class="text-center"><%= link_to 'Active Plants', active_plants_path, { :class=>"button small round disabled" } %></p></b>
+         </div>
+         <div class="small-4 columns">
+            <p class="text-right"><%= link_to 'Locations', locations_path, { :class=>"button small round disabled" } %></p>
+         </div>
+      </div>
    </div>
 </div>

@@ -34,12 +34,16 @@
    </table>
 
       <br>
+      <p class="text-left"><%= link_to 'New Harvesting Record', new_harvesting_record_path, { :class=>"button small round success" } %></p>
       <div class="row">
          <div class="small-4 columns">
+            <%= link_to 'Plantings', plantings_path, { :class=>"button small round disabled" }  %>
          </div>
          <div class="small-4 columns">
+            <p class="text-center"><%= link_to 'Active Plants', active_plants_path, { :class=>"button small round disabled" }  %> </p>
          </div>
-         
-     </div>
-   </div>
+         <div class="small-4 columns">
+            <p class="text-right"><%= link_to 'Records', active_plant_records_path, { :class=>"button small round disabled" }  %></p>
+         </div>
+      </div>
 </div>

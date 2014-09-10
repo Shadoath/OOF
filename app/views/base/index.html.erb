@@ -1,18 +1,18 @@
 <h2 align="center">Home</h2>
 <table align="center">
   <tr> 
-     <th><%= link_to "Plants",  plants_path, { :class=>"button tiny disabled" } %></th>
-     <th><%= link_to "Locations",  locations_path, { :class=>"button tiny disabled" }  %></th>
-    <th><%= link_to "Soils",  soils_path, { :class=>"button tiny disabled" }  %></th>
+     <th class="text-center"><%= link_to "Plants",  plants_path, { :class=>"button tiny disabled" } %></th>
+     <th class="text-center"><%= link_to "Soils",  soils_path, { :class=>"button tiny disabled" }  %></th>
+     <th class="text-center"><%= link_to "Locations",  locations_path, { :class=>"button tiny disabled" }  %></th>
   </tr> 
   <tr> 
-     <th><%= link_to "Plantings",  plantings_path, { :class=>"button small round success" }  %></th>
-     <th><%= link_to "Active Plants",  active_plants_path, { :class=>"red button medium round nice" }  %></th>
-     <th><%= link_to "Records",  active_plant_records_path, { :class=>"button small round disabled" }  %></th>
+     <th class="text-center"><%= link_to "Plantings",  plantings_path, { :class=>"button small round success" }  %></th>
+     <th class="text-center"><%= link_to "Active Plants",  active_plants_path, { :class=>"red button medium round nice" }  %></th>
+     <th class="text-center"><%= link_to "Records",  active_plant_records_path, { :class=>"button small round disabled" }  %></th>
   </tr> 
   <tr>
-     <th><%= link_to "Harvesting",  harvesting_records_path, { :class=>"button small round alert" }  %></th>
-     <th></th>
-     <th><%= link_to "Daily Records",  daily_records_path, { :class=>"button small round disabled" }  %></th>
+     <th class="text-center"><%= link_to "Harvesting",  harvesting_records_path, { :class=>"button small round alert" }  %></th>
+     <th class="text-center"></th>
+     <th class="text-center"><%= link_to "Daily Records",  daily_records_path, { :class=>"button small round disabled" }  %></th>
   </tr>  
 </table>

@@ -38,22 +38,19 @@
           <% end %>
         </tbody>
       </table>
-
       <br>
-           <p class="text-left"><%= link_to 'New Active Plant', new_active_plant_path, { :class=>"button small round success" }  %></p>
-
-   <div class="row">
-      <div class="small-4 columns">
-         <%= link_to 'Plants', plants_path %>
+      <p class="text-left"><%= link_to 'New Active Plant', new_active_plant_path, { :class=>"button small round success" }  %></p>
+      <div class="row">
+         <div class="small-4 columns">
+            <%= link_to 'Plantings', plantings_path, { :class=>"button small round disabled" }  %>
+         </div>
+         <div class="small-4 columns">
+            <p class="text-center"><%= link_to 'Harvests', harvesting_records_path, { :class=>"button small round disabled" }  %> </p>
+         </div>
+         <div class="small-4 columns">
+            <p class="text-right"><%= link_to 'Records', active_plant_records_path, { :class=>"button small round disabled" }  %></p>
+         </div>
       </div>
-      <div class="small-4 columns">
-         <p class="text-center"><%= link_to 'Locations', locations_path %> </p>
-      </div>
-      <div class="small-4 columns">
-         <p class="text-right"><%= link_to 'Records', active_plant_records_path %></p>
-
-      </div>
-   </div>
      
    </div>
 </div>

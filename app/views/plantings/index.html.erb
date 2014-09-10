@@ -1,42 +1,52 @@
-<h1>Listing plantings</h1>
-<%= link_to 'New AP', new_active_plant_path, { :class=>"button small round success" } %>
+<div class="row">
+  <div class="small-12 columns">
+      <h1>Listing plantings</h1>
+      <%= link_to 'New AP', new_active_plant_path, { :class=>"button small round success" } %>
+      <table>
+        <thead>
+          <tr>
+            <th><%= sortable "Active plant", "active_plant_id" %></th>
+            <th><%= sortable "Status", "plant_status_id" %></th>
+            <th><%= sortable "Location", "location_id" %></th>
+            <th><%= sortable "Count", "count_planted" %></th>
+            <th><%= sortable "Date", "date_planted" %></th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th><%= sortable "Active plant", "active_plant_id" %></th>
-      <th><%= sortable "Status", "plant_status_id" %></th>
-      <th><%= sortable "Location", "location_id" %></th>
-      <th><%= sortable "Count", "count_planted" %></th>
-      <th><%= sortable "Date", "date_planted" %></th>
-      <th><%= sortable "Active plant", "active_plant_id" %></th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @plantings.each do |planting| %>
-      <tr>
-         <% if !planting.active_plant.nil? %>
-            <% p_name = "#{planting.active_plant.plant.name}, #{planting.active_plant.plant.plant_type}" %>
-            <td><%= link_to p_name, active_plant_path(planting.active_plant_id)%></td>
-            <td><%= planting.active_plant_id %></td>
-         <% else %>
-            <td>Error</td>
-            <td>Error</td>
-         <% end %>
-         <td><%= planting.plant_status.name if planting.plant_status %></td>
-         <td><%= planting.location.name if planting.location %></td>
-         <td><%= planting.count_planted %></td>
-         <td><%= planting.date_planted %></td>
-         <td><%= link_to raw('<i class="fi-pencil"></i>'), edit_planting_path(planting), :title => "Edit this Planting" %> |
-            <%= link_to raw('<i class="fi-eye"></i>'), planting, :title => "View this planting" %> | 
-        <%= link_to raw('<i class="fi-trash"></i>'), planting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-<%= link_to 'New AP', new_active_plant_path, { :class=>"button small round success" } %>
-
+        <tbody>
+          <% @plantings.each do |planting| %>
+            <tr>
+               <% if !planting.active_plant.nil? %>
+                  <% p_name = "#{planting.active_plant.plant.name}, #{planting.active_plant.plant.plant_type}" %>
+                  <td><%= link_to p_name, active_plant_path(planting.active_plant_id)%></td>
+               <% else %>
+                  <td>Error</td>
+               <% end %>
+               <td><%= planting.plant_status.name if planting.plant_status %></td>
+               <td><%= planting.location.name if planting.location %></td>
+               <td><%= planting.count_planted %></td>
+               <td><%= planting.date_planted %></td>
+               <td><%= link_to raw('<i class="fi-pencil"></i>'), edit_planting_path(planting), :title => "Edit this Planting" %> |
+                  <%= link_to raw('<i class="fi-eye"></i>'), planting, :title => "View this planting" %> | 
+              <%= link_to raw('<i class="fi-trash"></i>'), planting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <br>
+      <%= link_to 'New AP', new_active_plant_path, { :class=>"button small round success" } %>
+      <div class="row">
+         <div class="small-4 columns">
+            <%= link_to 'Active Plants', active_plants_path, { :class=>"button small round disabled" }  %>
+         </div>
+         <div class="small-4 columns">
+            <p class="text-center"><%= link_to 'Harvests', harvesting_records_path, { :class=>"button small round disabled" }  %> </p>
+         </div>
+         <div class="small-4 columns">
+            <p class="text-right"><%= link_to 'Records', active_plant_records_path, { :class=>"button small round disabled" }  %></p>
+         </div>
+      </div>
+   </div>
+</div>
+ 

@@ -1,43 +1,50 @@
-<h1>Listing plants</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th><%= sortable "Name" %></th>
-      <th><%= sortable "Type", "plant_type" %></th>
-      <th><%= sortable "Group",  "plant_group" %></th>
-       <th><%= sortable "Harvest type",  "harvest_type_id" %></th>
-       <th><%= sortable "Water amount",  "water_amount_id" %></th>
-      <th>Comment</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @plants.each do |plant| %>
-      <tr>
-         <td><%= plant.name %></td>
-         <td><%= plant.plant_type %></td>
-         <td><%= plant.plant_group %></td>
-         <td><%= plant.harvest_type.name if plant.harvest_type %></td>
-         <td><%= plant.water_amount.name if plant.water_amount %></td>
-         <td><%= plant.comment %></td>
-         <td><%= link_to raw('<i class="fi-pencil small"></i>'), edit_plant_path(plant)%> |
-            <%= link_to raw('<i class="fi-eye medium"></i>'), plant, :title => "View this plant" %> |
-            <%= link_to raw('<i class="fi-trash large"></i>'), plant_path(plant), method: :delete, data: { confirm: 'Are you sure you want to remove this plant?' } %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
 <div class="row">
-   <div class="small-4 columns">
-   </div>
-   <div class="small-4 columns">
-      
-   </div>
-   <div class="small-4 columns">
-      <p class="text-right"><%= link_to 'New Plant', new_plant_path, { :class=>"button small round success" } %></p>
-   </div>
+  <div class="small-12 columns">
+     <h1>Listing plants</h1>
+      <p class="text-left"><%= link_to 'New Plant', new_plant_path, { :class=>"button small round success" } %></p>
+
+      <table>
+        <thead>
+          <tr>
+            <th><%= sortable "Name" %></th>
+            <th><%= sortable "Type", "plant_type" %></th>
+            <th><%= sortable "Group",  "plant_group" %></th>
+             <th><%= sortable "Harvest type",  "harvest_type_id" %></th>
+             <th><%= sortable "Water amount",  "water_amount_id" %></th>
+            <th>Comment</th>
+            <th colspan="2"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @plants.each do |plant| %>
+            <tr>
+               <td><%= plant.name %></td>
+               <td><%= plant.plant_type %></td>
+               <td><%= plant.plant_group %></td>
+               <td><%= plant.harvest_type.name if plant.harvest_type %></td>
+               <td><%= plant.water_amount.name if plant.water_amount %></td>
+               <td><%= plant.comment %></td>
+               <td><%= link_to raw('<i class="fi-pencil small"></i>'), edit_plant_path(plant)%> |
+                  <%= link_to raw('<i class="fi-eye medium"></i>'), plant, :title => "View this plant" %> |
+                  <%= link_to raw('<i class="fi-trash large"></i>'), plant_path(plant), method: :delete, data: { confirm: 'Are you sure you want to remove this plant?' } %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <br>
+      <p class="text-left"><%= link_to 'New Plant', new_plant_path, { :class=>"button small round success" } %></p>
+      <div class="row">
+         <div class="small-4 columns">
+            <p class="text-left"><%= link_to 'Locations', locations_path, { :class=>"button small round disabled" } %></p>
+         </div>
+         <div class="small-4 columns">
+            <b><p class="text-center"><%= link_to 'Active Plants', active_plants_path, { :class=>"button small round disabled" } %></p></b>
+         </div>
+         <div class="small-4 columns">
+            <p class="text-right"><%= link_to 'Soils', soils_path, { :class=>"button small round disabled" } %></p>
+         </div>
+      </div>
+   </div>      
 </div>

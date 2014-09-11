@@ -6,7 +6,7 @@ class ActivePlantsController < ApplicationController
   # GET /active_plants.json
   def index
      if(!params[:sort].nil?)
-        @active_plants = ActivePlant.order(params[:sort] + ' ' + params[:direction]).all
+        @active_plants = ActivePlant.joins(:plant).order(params[:sort] + ' ' + params[:direction])
      else
         @active_plants = ActivePlant.order(:location_id, :plant_id).all
      end
@@ -20,7 +20,7 @@ class ActivePlantsController < ApplicationController
      @planting = Planting.where(active_plant_id: @active_plant.id).first
      
      puts @planting.inspect
-     @harvesting_records = HarvestingRecord.where(active_plant_id: @active_plant.id).order(:date_harvested).all
+     @harvesting_records = HarvestingRecord.where(active_plant_id: @active_plant.id).order(:date_harvested)
 
      #@active_plant = ActivePlant.find(params[:id])
 

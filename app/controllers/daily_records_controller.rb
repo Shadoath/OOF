@@ -14,7 +14,7 @@ class DailyRecordsController < ApplicationController
      if(WEATHER_VARS[:last_parse_time] == nil)
         WEATHER_VARS[:last_parse_time] = Time.now
      end
-     @cur_time = Time.now + 5.minutes
+     @cur_time = Time.now
      puts "$cur_time = #{@cur_time.to_s}"
      puts "$last_parse_time = #{WEATHER_VARS[:last_parse_time].to_s}"
      if( WEATHER_VARS[:last_parse_time] < @cur_time)
@@ -24,8 +24,13 @@ class DailyRecordsController < ApplicationController
            @location = @parsed_weather_json['location']['city'] 
            @temp_f = @parsed_weather_json['current_observation']['temp_f'] 
            puts "Current temperature in #{@location} is: #{@temp_f}\n" 
-           WEATHER_VARS[:last_parse_time] = Time.now
            @yesterday = w_api.history_for(1.day.ago,"CO","Durango")
+           WEATHER_VARS[:last_parse_time] = Time.now + 10.minutes
+        end
+        open("http://api.wunderground.com/api/ef532dcfb1826593/astronomy/q/CO/Durango.json") do |w|
+           @astronomy = w.read
+           @parsed_astronomy = JSON.parse(@astronomy)
+           
         end
      end
   end

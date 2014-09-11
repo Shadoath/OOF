@@ -19,5 +19,8 @@ require "awesome_print"
    <div>
       <%= link_to 'Weather API', 'http://www.wunderground.com/?apiref=313cd5e9f1c15aff' %><br>
    </div>
-   Yesterday = <%=  raw("#{@yesterday.to_s}") %>
+   <%= @yesterday.to_s %>
+   Yesterday temp HI= <%=  @yesterday[:maxtempi] %>
+   <br>
+   
 </div>

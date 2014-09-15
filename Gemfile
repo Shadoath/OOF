@@ -8,6 +8,9 @@ gem 'rails', '4.1.1'
 #gem 'sqlite3'
 gem 'pg'
 
+#wunderground
+gem 'wunderground'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets

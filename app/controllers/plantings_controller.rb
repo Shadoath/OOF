@@ -6,7 +6,7 @@ class PlantingsController < ApplicationController
   # GET /plantings.json
   def index
      if(!params[:sort].nil?)
-        @plantings = Planting.order(params[:sort] + ' ' + params[:direction]).all
+        @plantings = Planting.joins(active_plant: :plant).order(params[:sort] + ' ' + params[:direction]).all
      else
         @plantings = Planting.all
      end

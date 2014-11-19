@@ -5,8 +5,8 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.1'
 
 # Use sqlite3 as the database
-#gem 'sqlite3'
-gem 'pg'
+gem 'sqlite3'
+#gem 'pg'
 
 #wunderground
 gem 'wunderground'
@@ -69,5 +69,10 @@ group :development, :test do
    gem 'cucumber-rails', require: false
    gem 'database_cleaner'
    gem 'capybara'
+   gem 'pry'
    #gem 'capybara-rails'
+
 end
+
+#weather time
+gem 'wunderground'

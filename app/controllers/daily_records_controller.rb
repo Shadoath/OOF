@@ -8,9 +8,9 @@ class DailyRecordsController < ApplicationController
      if(!params[:sort].nil?)
         @daily_records = DailyRecord.order(params[:sort] + ' ' + params[:direction]).all
      else
-        @daily_records = DailyRecord.all
+        @daily_records = DailyRecord.order(:daily_date).all
      end
-     
+     @total_eggs = DailyRecord.count(:eggs_collected)
      if(WEATHER_VARS[:last_parse_time] == nil)
         WEATHER_VARS[:last_parse_time] = Time.now
      end

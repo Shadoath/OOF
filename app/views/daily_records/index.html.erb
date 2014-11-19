@@ -28,9 +28,9 @@
               <td><%= daily_record.temp_low %></td>
               <td><%= daily_record.temp_high %></td>
               <td><%= daily_record.eggs_collected %></td>
-              <td><%= daily_record.total_ducks %></td>
-              <td><%= daily_record.hours_of_daylight %></td>
-              <td><%= daily_record.sunrise %></td>
+               <td><%= daily_record.total_ducks %></td>
+               <td><%= Time.parse(daily_record.hours_of_daylight.to_s).to_s(:time) %></td>
+              <td><%=  Time.parse(daily_record.sunrise.to_s).to_s(:time) %></td>
                <td><%= daily_record.moon_phase.name %></td>
               <td><%= daily_record.moon_percent %></td>
               <td><%= daily_record.weather %></td>
@@ -42,6 +42,7 @@
           <% end %>
         </tbody>
       </table>
+     <p>Total Eggs = <%= @total_eggs %></p>
       <%= link_to 'New Daily data', new_daily_record_path, { :class=>"button small round success" } %>
 
       <%= render 'weather' %>

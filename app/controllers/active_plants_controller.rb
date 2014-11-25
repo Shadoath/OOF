@@ -6,9 +6,9 @@ class ActivePlantsController < ApplicationController
   # GET /active_plants.json
   def index
      if(!params[:sort].nil?)
-        @active_plants = ActivePlant.joins(:plant).order(params[:sort] + ' ' + params[:direction])
+        @active_plants = ActivePlant.joins(:plant).where("plant_status_id < ?", 8).order(params[:sort] + ' ' + params[:direction])
      else
-        @active_plants = ActivePlant.order(:location_id, :plant_id).all
+        @active_plants = ActivePlant.where("plant_status_id < ?", 8).order(:location_id, :plant_id).all
      end
   end
 

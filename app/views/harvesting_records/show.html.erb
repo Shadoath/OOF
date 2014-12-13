@@ -24,7 +24,7 @@
          </tr>
          <tr>
             <td><strong>Comment:</strong></td>
-            <td><td><%= @harvesting_record.comment %></td>
+            <td><%= @harvesting_record.comment %></td>
          </tr>
          <tr>
             <td><strong>Link to:</strong></td>
@@ -38,7 +38,7 @@
 </div>
    <div class="row">
       <div class="small-4 columns">
-         <%= link_to 'All', harvesting_records_path, { :class=>"button small" }  %>
+         <%= link_to 'Havests', harvesting_records_path, { :class=>"button small" }  %>
       </div>
       <div class="small-4 columns">
          <p class="text-center"><%= link_to 'Edit', edit_harvesting_record_path(@harvesting_record), { :class=>"button small round alert" } %> </p>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140803155816) do
+ActiveRecord::Schema.define(version: 20140908222055) do
 
   create_table "active_plant_records", force: true do |t|
     t.integer  "active_plant_id"
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20140803155816) do
     t.integer "moon_phase_id"
     t.integer "moon_percent"
     t.text    "weather"
-    t.integer "precipitation"
+    t.float   "precipitation"
   end
 
   create_table "harvest_types", force: true do |t|
